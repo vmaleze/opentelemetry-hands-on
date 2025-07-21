@@ -1,0 +1,38 @@
+name: Push Helm Chart to GHCR using OCI
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'microservices/infra/microservices-base-chart/**'
+
+permissions:
+  packages: write
+  contents: read
+
+jobs:
+  helm-publish-oci:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Helm
+        uses: azure/setup-helm@v4
+        with:
+          version: v3.14.0
+
+      - name: Log in to GitHub Container Registry
+        run: |
+          echo ${{ secrets.GITHUB_TOKEN }} | helm registry login ghcr.io --username ${{ github.actor }} --password-stdin
+
+      - name: Package Helm chart
+        run: |
+          helm package microservices/infra/microservices-base-chart --destination .
+
+      - name: Push chart to GHCR (OCI)
+        run: |
+          CHART_PACKAGE=$(ls microservice-*.tgz)
+          helm push $CHART_PACKAGE oci://ghcr.io/${{ github.repository_owner }}

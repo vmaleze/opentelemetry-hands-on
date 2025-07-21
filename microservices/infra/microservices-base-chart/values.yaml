@@ -1,0 +1,5 @@
+replicaCount: 1
+postgres:
+  enabled: false
+autoscaling:
+  enabled: false

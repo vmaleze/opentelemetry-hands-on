@@ -1,0 +1,35 @@
+{{- if .Values.autoscaling.enabled -}}
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: {{ .Release.Name }}-scaledobject
+  namespace: microservices
+  annotations:
+    {{- if .Values.autoscaling.pausedReplicas }}
+    autoscaling.keda.sh/paused-replicas: {{ .Values.autoscaling.pausedReplicas | quote }}
+    {{- end }}
+    autoscaling.keda.sh/paused: {{ .Values.autoscaling.paused | default "false" | quote }}
+spec:
+  minReplicaCount: {{ .Values.autoscaling.minReplicas | default 1 | int }}
+  maxReplicaCount: {{ .Values.autoscaling.maxReplicas | default 12 | int }}
+  scaleTargetRef:
+    name: {{ .Release.Name }}
+  {{- if .Values.autoscaling.cooldownPeriod }}
+  cooldownPeriod: {{ .Values.autoscaling.cooldownPeriod | int }}
+  {{- end }}
+  {{- with .Values.autoscaling.behavior }}
+  advanced:
+    horizontalPodAutoscalerConfig:
+      behavior:
+        {{- toYaml . | nindent 8 }}
+  {{- end }}
+  triggers:
+    - type: prometheus
+      metadata:
+        serverAddress: http://grafana-prometheus-server.observability
+        threshold: {{ .Values.autoscaling.targetHttpPerSeconds | default 8 | quote }}
+        query: sum by(service_name) (rate(http_server_request_duration_seconds_count{service_name="{{ .Release.Name }}"}[2m]))
+  {{- with .Values.autoscaling.customTriggers }}
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+{{- end -}}
