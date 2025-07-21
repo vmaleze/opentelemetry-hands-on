@@ -54,5 +54,8 @@ jobs:
           context: microservices/order
           file: microservices/order/Dockerfile
           push: true
-          tags: ghcr.io/${{ github.repository }}/order:${{github.sha}}
+          platforms: linux/amd64,linux/arm64
+          tags: |
+            ghcr.io/${{ github.repository }}/order:latest
+            ghcr.io/${{ github.repository }}/order:${{github.sha}}
 

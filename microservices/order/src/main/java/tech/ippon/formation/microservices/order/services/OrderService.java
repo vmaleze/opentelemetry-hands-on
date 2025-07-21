@@ -1,7 +1,5 @@
 package tech.ippon.formation.microservices.order.services;
 
-import io.micrometer.core.instrument.MeterRegistry;
-import io.micrometer.core.instrument.simple.SimpleMeterRegistry;
 import java.io.IOException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,12 +19,10 @@ public class OrderService {
 
   private final KafkaTemplate<String, Object> kafkaProducer;
   private final ShoppingCartClient shoppingCartClient;
-  private final MeterRegistry otlpMeterRegistry;
 
-  public OrderService(KafkaTemplate<String, Object> kafkaProducer, ShoppingCartClient shoppingCartClient, MeterRegistry otlpMeterRegistry) {
+  public OrderService(KafkaTemplate<String, Object> kafkaProducer, ShoppingCartClient shoppingCartClient) {
     this.kafkaProducer = kafkaProducer;
     this.shoppingCartClient = shoppingCartClient;
-    this.otlpMeterRegistry = otlpMeterRegistry;
   }
 
   public void createOrder(Order order) {
@@ -46,7 +42,6 @@ public class OrderService {
     order.setCart(response.body());
 
     logger.info("Order created: {}", order);
-    otlpMeterRegistry.counter("order.created").increment();
     kafkaProducer.send("orders", order);
   }
 }
