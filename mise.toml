@@ -1,4 +1,5 @@
 [tools]
+helm = "latest"
 java = "temurin-21"
 k3d = "latest"
 kubectl = "latest"
