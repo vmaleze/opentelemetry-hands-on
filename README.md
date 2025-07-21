@@ -4,6 +4,7 @@
 
 - microservices : 4 Spring Boot applications
 - presentation-slides : the presentation in format [Slidev](https://sli.dev/)
+- traffic-simulation : script to simulate the traffic on the microservices
 
 ## MacOS
 
@@ -13,7 +14,7 @@
 
 ### Install winget
 
-[Microsoft documentatiopn](https://learn.microsoft.com/fr-fr/windows/package-manager/winget/)
+It is normally included in recent Windows 10 versions and in Windows 11. If not, check the [Microsoft documentatiopn](https://learn.microsoft.com/fr-fr/windows/package-manager/winget/).
 
 ### Install Docker Desktop
 
@@ -44,14 +45,44 @@ winget install headlamp
 
 Switch to "English" in the settings.
 
-## Début du TP
+## TP 1: start
 
-### Configuration des clusters
+### Cluster configuration
 
-```powershell
-k3d cluster create otel-hands-on --agents 2 # on crée 2 noeuds dans le cluster pour "avoir un peu puissance"
+```sh
+k3d cluster create otel-hands-on --agents 2 # We create 2 nodesin the cluster to have "some power"
 kubectl create namespace microservices
-kubectl create namespace observability
+kubens microservices
+kubectl apply -n microservices -f microservices/infra/kafka-deployment.yaml
 ```
 
-Vérifier que tout va bien dans Headlamp.
+Check in Headlamp that everything is fine.
+
+If you need to relaunch the cluster:
+
+```sh
+k3d cluster start otel-hands-on
+```
+
+### Microservices installation
+
+```sh
+helm dependency up ./microservices/order/infra && helm install order ./microservices/order/infra
+helm dependency up ./microservices/product/infra && helm install product ./microservices/product/infra
+helm dependency up ./microservices/shopping-cart/infra && helm install shopping-cart ./microservices/shopping-cart/infra
+helm dependency up ./microservices/stock/infra && helm install stock ./microservices/stock/infra
+```
+
+### Launch order simulation
+
+```sh
+kubectl apply -f ./traffic-simulation/pod.yaml
+```
+
+### Find a bug
+
+There's a bug in the supply chain order: someone came to tell us that the order flow is suprislingly low and likes us to investigate. Can you find what's wrong?
+
+Tip: check logs in Headlamp or via `kubectl get logs deployments/<deployment-name> -f`.
+
+## TP 2: install the observability stack
