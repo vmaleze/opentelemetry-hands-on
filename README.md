@@ -1,45 +1,48 @@
 # Hands On - OpenTelemetry
 
+## Repository content
+
+- microservices : 4 Spring Boot applications
+- presentation-slides : the presentation in format [Slidev](https://sli.dev/)
+
 ## MacOS
 
 ## Linux
 
-## Windows avec PowerShell
+## Windows with PowerShell
 
-### Installer winget
+### Install winget
 
-[Doc Microsoft](https://learn.microsoft.com/fr-fr/windows/package-manager/winget/)
+[Microsoft documentatiopn](https://learn.microsoft.com/fr-fr/windows/package-manager/winget/)
 
-### Installer Docker Desktop
+### Install Docker Desktop
 
-Docker Desktop
+[Installation guide](https://docs.docker.com/desktop/setup/install/windows-install/)
 
-[Doc K3D au cas où](https://k3d.io/stable/#other-installers)
+### Install mise
 
-### Installer mise
+[Starting documenation](https://mise.jdx.dev/getting-started.html)
 
-[Doc démarrage](https://mise.jdx.dev/getting-started.html)
-
-Depuis le dossier où a été cloné le projet
+From the directory when the project was cloned:
 
 ```powershell
 winget install jdx.mise
 Invoke-Item $profile
-# Coller le contenu pour [activer mise](https://mise.jdx.dev/getting-started.html#activate-mise)
+# Paste the content to [activate mise](https://mise.jdx.dev/getting-started.html#activate-mise)
 mise install
 ```
 
-Tout est stocké dans `%LocalAppData%\mise`.
+Everything is stored in `%LocalAppData%\mise`.
 
-### Installer Headlamp
+### Install Headlamp
 
-[Site officiel](https://headlamp.dev/)
+[Officiel website](https://headlamp.dev/)
 
 ```powershell
 winget install headlamp
 ```
 
-Basculer en langue anglaise dans les paramètres
+Switch to "English" in the settings.
 
 ## Début du TP
 
@@ -50,3 +53,5 @@ k3d cluster create otel-hands-on --agents 2 # on crée 2 noeuds dans le cluster 
 kubectl create namespace microservices
 kubectl create namespace observability
 ```
+
+Vérifier que tout va bien dans Headlamp.
