@@ -6,6 +6,7 @@ on:
       - '.github/workflows/build-order.yml'
       - 'microservices/order/**'
       - '!microservices/order/readme.md'
+      - '!microservices/order/infra/**'
     branches:
       - main
 
