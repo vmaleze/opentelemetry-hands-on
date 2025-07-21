@@ -1,0 +1,11 @@
+application:
+  shopping-cart-url: http://localhost:${wiremock.server.port}/
+
+spring:
+  kafka:
+    bootstrap-servers: ${spring.embedded.kafka.brokers}
+    producer:
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+
+wiremock:
+  reset-mappings-after-each-test: true

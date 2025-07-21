@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+
+  cart-db:
+    image: postgres:14
+    ports:
+      - "9082:5432"
+    environment:
+      POSTGRES_DB: cart
+      POSTGRES_PASSWORD: password

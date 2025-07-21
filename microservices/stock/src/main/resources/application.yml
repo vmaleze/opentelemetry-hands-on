@@ -1,0 +1,27 @@
+server:
+  port: 8080
+  error:
+    include-message: always
+  forward-headers-strategy: framework
+
+spring:
+  sql:
+    init:
+      mode: always
+  datasource:
+    hikari:
+      maximum-pool-size: 5
+      connection-timeout: 20000
+    url: jdbc:postgresql://${STOCK_DB_URL:localhost:9081}/stock
+    username: postgres
+    password: password
+  jpa:
+    hibernate:
+      ddl-auto: create
+    defer-datasource-initialization: true
+  kafka:
+    bootstrap-servers: ${KAFKA_BROKERS:localhost:9093}
+    consumer:
+      group-id: stock
+      value-deserializer: org.apache.kafka.common.serialization.ByteArrayDeserializer
+

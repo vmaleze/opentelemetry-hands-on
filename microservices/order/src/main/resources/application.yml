@@ -1,0 +1,22 @@
+server:
+  port: 8080
+  error:
+    include-message: always
+    include-binding-errors: never
+  forward-headers-strategy: framework
+
+application:
+  shopping-cart-url: ${CART_SVC_URL:http://localhost:8082/}
+
+spring:
+  kafka:
+    bootstrap-servers: ${KAFKA_BROKERS:localhost:9093}
+    producer:
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+
+management:
+  otlp:
+    metrics:
+      export:
+        url: ${OTEL_EXPORTER_OTLP_METRICS_ENDPOINT}
+        step: 5s

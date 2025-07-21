@@ -1,0 +1,16 @@
+server:
+  port: 8080
+  error:
+    include-message: always
+  forward-headers-strategy: framework
+
+spring:
+  datasource:
+    hikari:
+      maximum-pool-size: 5
+      connection-timeout: 20000
+    url: jdbc:postgresql://${PRODUCT_DB_URL:localhost:5432}/product
+    username: postgres
+    password: password
+  liquibase:
+    change-log: classpath:db/liquibase-changelog.xml

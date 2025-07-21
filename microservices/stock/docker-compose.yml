@@ -1,0 +1,27 @@
+version: '3.1'
+
+services:
+
+  stock-db:
+    image: postgres:14
+    ports:
+      - "9081:5432"
+    environment:
+      POSTGRES_DB: stock
+      POSTGRES_PASSWORD: password
+
+  kafka:
+    image: apache/kafka-native:latest
+    container_name: kafka-cluster
+    environment:
+      KAFKA_NODE_ID: "1"
+      KAFKA_PROCESS_ROLES: "broker,controller"
+      KAFKA_CONTROLLER_LISTENER_NAMES: "CONTROLLER"
+      KAFKA_CONTROLLER_QUORUM_VOTERS: "1@localhost:9091"
+      KAFKA_LISTENERS: "CONTROLLER://0.0.0.0:9091,K8S://0.0.0.0:9092,HOST://0.0.0.0:9093"
+      KAFKA_ADVERTISED_LISTENERS: "K8S://kafka-cluster:9092,HOST://localhost:9093"
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: "CONTROLLER:PLAINTEXT,K8S:PLAINTEXT,HOST:PLAINTEXT"
+      KAFKA_INTER_BROKER_LISTENER_NAME: "K8S"
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: "1"
+    ports:
+      - "9093:9093"

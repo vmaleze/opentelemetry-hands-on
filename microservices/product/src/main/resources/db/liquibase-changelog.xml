@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.8.xsd">
+
+    <!-- Création de la table products -->
+    <changeSet id="1-create-products-table" author="admin">
+        <createTable tableName="products">
+            <column name="id" type="UUID">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="TEXT"/>
+        </createTable>
+
+        <!-- Index sur la colonne id -->
+        <createIndex indexName="idx_products_id" tableName="products">
+            <column name="id"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- Insertion des données -->
+    <changeSet id="2-insert-products" author="admin">
+        <insert tableName="products">
+            <column name="id" value="fc7cb0e6-6d6e-4254-923d-c91c8a5a61c9"/>
+            <column name="name" value="Marteau"/>
+            <column name="description" value="Un super marteau pour taper fort sur des clous."/>
+        </insert>
+        <insert tableName="products">
+            <column name="id" value="e1f2e48e-c633-4c8a-987e-1a7f6d1c1a8b"/>
+            <column name="name" value="Clé à molette"/>
+            <column name="description" value="Existe en version sans molette."/>
+        </insert>
+        <insert tableName="products">
+            <column name="id" value="99320c40-48cc-49cf-8356-d90709c5e3e6"/>
+            <column name="name" value="Tournevis"/>
+            <column name="description" value="Si ça bouge, il faut continuer de visser."/>
+        </insert>
+        <insert tableName="products">
+            <column name="id" value="7a7efd28-7120-4184-9b54-06ba7f54fe75"/>
+            <column name="name" value="Niveau à bulle"/>
+            <column name="description" value="Pour monter des meubles moches, mais droits."/>
+        </insert>
+        <insert tableName="products">
+            <column name="id" value="6898ee27-d67d-49a3-812d-1becb3052fed"/>
+            <column name="name" value="Nintendo Switch"/>
+            <column name="description" value="Mario, Zelda, mais pas Halo."/>
+        </insert>
+        <insert tableName="products">
+            <column name="id" value="3baa8cad-c3ff-4e0d-a5d2-2d5702ca515e"/>
+            <column name="name" value="PS5"/>
+            <column name="description" value="Surchauffe si on l'allume."/>
+        </insert>
+        <insert tableName="products">
+            <column name="id" value="88d71a18-e91b-463a-aff6-45f545a61ee0"/>
+            <column name="name" value="Xbox Series X"/>
+            <column name="description" value="Le Cube."/>
+        </insert>
+        <insert tableName="products">
+            <column name="id" value="68a5c340-8244-4d42-9d30-cd59f5f1387a"/>
+            <column name="name" value="iPhone 12 Pro Max"/>
+            <column name="description" value="1200€ de pur bonheur."/>
+        </insert>
+        <insert tableName="products">
+            <column name="id" value="0abcacff-0a58-41ce-954e-5c135a715e45"/>
+            <column name="name" value="OnePlus 8T"/>
+            <column name="description" value="Flagship killer. Enfin y a 6 ans."/>
+        </insert>
+        <insert tableName="products">
+            <column name="id" value="f8d98a11-dc93-45d1-9393-8eb4699fdc4c"/>
+            <column name="name" value="Mug Legend of Zelda"/>
+            <column name="description" value="Sauver la princesse OK, mais d'abord un petit thé."/>
+        </insert>
+        <insert tableName="products">
+            <column name="id" value="dc459d7a-4aad-4547-843f-958bf09904a0"/>
+            <column name="name" value="Set de verres à whisky"/>
+            <column name="description" value="Après avoir battu Ganon."/>
+        </insert>
+        <insert tableName="products">
+            <column name="id" value="100141d6-66c9-426e-b826-6f3f0b6b16ce"/>
+            <column name="name" value="Papertoy Pikachu"/>
+            <column name="description" value="Moins encombrant qu'un vrai Pikachu."/>
+        </insert>
+        <insert tableName="products">
+            <column name="id" value="c534ac50-013b-47e0-b7a7-729c6a7dc631"/>
+            <column name="name" value="Casque Sony WH-1000XM4"/>
+            <column name="description" value="Casque à réduction de bruit, comme le nom le laissait deviner."/>
+        </insert>
+        <insert tableName="products">
+            <column name="id" value="c847c28b-cfae-40d8-9e94-2563be777775"/>
+            <column name="name" value="Cible de fléchette"/>
+            <column name="description" value="Pour les sioux."/>
+        </insert>
+        <insert tableName="products">
+            <column name="id" value="35788f2d-5066-493a-ad83-55b73bbfcd8a"/>
+            <column name="name" value="Adidas Gazelle Noires"/>
+            <column name="description" value="Des chaussures."/>
+        </insert>
+        <insert tableName="products">
+            <column name="id" value="04ada073-fa70-4282-bc7e-8a9b783a8b27"/>
+            <column name="name" value="Machine à pop-corn"/>
+            <column name="description" value="Pour les gourmands."/>
+        </insert>
+        <insert tableName="products">
+            <column name="id" value="27b7335a-7a76-404e-be01-aaaedcb36e4d"/>
+            <column name="name" value="Set de couteaux de cuisine"/>
+            <column name="description" value="Pour les serial-killers."/>
+        </insert>
+        <insert tableName="products">
+            <column name="id" value="e4b837df-8d5f-40df-9559-31eaebd499da"/>
+            <column name="name" value="Carafe à vin"/>
+            <column name="description" value="Pour les bon-vivants."/>
+        </insert>
+        <insert tableName="products">
+            <column name="id" value="eae8a624-b8b3-40f9-8ab4-2cdc783a3adb"/>
+            <column name="name" value="Bracelet connecté Xiaomi Mi Band 5"/>
+            <column name="description" value="Pour les vivants."/>
+        </insert>
+        <insert tableName="products">
+            <column name="id" value="cf528870-7b87-4ccc-a8c1-df9ba8f7782c"/>
+            <column name="name" value="Enceinte UE MegaBoom 2"/>
+            <column name="description" value="Du bon son."/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>

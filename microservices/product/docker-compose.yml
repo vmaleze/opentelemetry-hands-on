@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+
+  product-db:
+    image: postgres:14
+    ports:
+      - "9080:5432"
+    environment:
+      POSTGRES_DB: product
+      POSTGRES_PASSWORD: password

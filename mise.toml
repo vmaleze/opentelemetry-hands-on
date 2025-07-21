@@ -1,0 +1,4 @@
+[tools]
+java = "temurin-21"
+k3d = "latest"
+kubectl = "latest"
