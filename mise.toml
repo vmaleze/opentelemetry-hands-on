@@ -2,3 +2,4 @@
 java = "temurin-21"
 k3d = "latest"
 kubectl = "latest"
+kubens = "latest"
