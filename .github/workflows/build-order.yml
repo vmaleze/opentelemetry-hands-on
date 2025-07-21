@@ -3,6 +3,7 @@ name: Test extension
 on:
   push:
     paths:
+      - '.github/workflows/build-order.yml'
       - 'microservices/order/**'
       - '!microservices/order/readme.md'
     branches:
@@ -37,6 +38,9 @@ jobs:
       - name: Build with Maven
         working-directory: microservices/order
         run: mvn clean package
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
