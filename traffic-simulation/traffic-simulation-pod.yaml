@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: traffic-simlation-pod
+spec:
+  containers:
+    - name: traffic-simlation
+      image: ghcr.io/vmaleze/opentelemetry-hands-on/traffic-simlation:latest
