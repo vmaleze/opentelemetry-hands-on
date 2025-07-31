@@ -1,9 +1,9 @@
-name: Build Order Service
+name: Build Product Service
 
 on:
   push:
     paths:
-      - "microservices/order/**"
+      - "microservices/product/**"
   workflow_dispatch:
 
 permissions:
@@ -14,4 +14,4 @@ jobs:
   call-build:
     uses: ./.github/workflows/build-microservice.yml
     with:
-      service-name: order
+      service-name: product
