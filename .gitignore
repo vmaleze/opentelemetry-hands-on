@@ -1,4 +1,5 @@
-.idea
+.idea/
 Chart.lock
 charts
 *.tgz
+.vscode/
