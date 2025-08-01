@@ -975,6 +975,14 @@
     "@slidev/types" "52.0.0"
     yaml "^2.8.0"
 
+"@slidev/parser@^0.47.4":
+  version "0.47.5"
+  resolved "https://registry.yarnpkg.com/@slidev/parser/-/parser-0.47.5.tgz#55b77d43e169d9536aaec821b3198d26ad8758fd"
+  integrity sha512-KvqOEhIFuMDu8CjAsehMNKlAnnmAn2TRHiEymc3CMadid05oWa5zgTxqEyMxUl2rjWpYs3A1yDiendZsGYs3HA==
+  dependencies:
+    "@slidev/types" "0.47.5"
+    js-yaml "^4.1.0"
+
 "@slidev/rough-notation@^0.1.0":
   version "0.1.0"
   resolved "https://registry.npmjs.org/@slidev/rough-notation/-/rough-notation-0.1.0.tgz"
@@ -990,6 +998,11 @@
     "@slidev/types" "^0.47.0"
     codemirror-theme-vars "^0.1.2"
     prism-theme-vars "^0.2.4"
+
+"@slidev/types@0.47.5", "@slidev/types@^0.47.0":
+  version "0.47.5"
+  resolved "https://registry.npmjs.org/@slidev/types/-/types-0.47.5.tgz"
+  integrity sha512-X67V4cCgM0Sz50bP8GbVzmiL8DHC2IXvdKcsN7DlxHyf+/T4d9GveeGukwha5Fx3MuYeGZWKag7TFL2ZY4w54A==
 
 "@slidev/types@52.0.0":
   version "52.0.0"
@@ -1013,11 +1026,6 @@
     vite-plugin-vue-server-ref "^1.0.0"
     vue "^3.5.17"
     vue-router "^4.5.1"
-
-"@slidev/types@^0.47.0":
-  version "0.47.5"
-  resolved "https://registry.npmjs.org/@slidev/types/-/types-0.47.5.tgz"
-  integrity sha512-X67V4cCgM0Sz50bP8GbVzmiL8DHC2IXvdKcsN7DlxHyf+/T4d9GveeGukwha5Fx3MuYeGZWKag7TFL2ZY4w54A==
 
 "@szmarczak/http-timer@^5.0.1":
   version "5.0.1"
@@ -3097,6 +3105,13 @@ js-yaml@^3.13.1:
     argparse "^1.0.7"
     esprima "^4.0.0"
 
+js-yaml@^4.1.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/js-yaml/-/js-yaml-4.1.0.tgz#c1fb65f8f5017901cdd2c951864ba18458a10602"
+  integrity sha512-wpxZs9NoxZaJESJGIZTyDEaYpl0FKSA+FB9aJiyemKhMwkxQg63h4T1KJgUGHpTqPDNRcmmYLugrRjJlBtWvRA==
+  dependencies:
+    argparse "^2.0.1"
+
 jsesc@^3.0.2:
   version "3.1.0"
   resolved "https://registry.npmjs.org/jsesc/-/jsesc-3.1.0.tgz"
@@ -3969,6 +3984,13 @@ pptxgenjs@^4.0.1:
     https "^1.0.0"
     image-size "^1.2.1"
     jszip "^3.10.1"
+
+prettier-plugin-slidev@^1.0.5:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/prettier-plugin-slidev/-/prettier-plugin-slidev-1.0.5.tgz#4d9583903e63ba8c9b0e677003ea5ea562ffeeb5"
+  integrity sha512-1xaKzOAX17QAcn1roUgQIAfeio3HPYYefCgzxh6Bzk+5rJJxq0I8HUhLrUyv9nCpIP6e9CDv/yDQSdEeqqRUuA==
+  dependencies:
+    "@slidev/parser" "^0.47.4"
 
 prettier@^3.6.2:
   version "3.6.2"

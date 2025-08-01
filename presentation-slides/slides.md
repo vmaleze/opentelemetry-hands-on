@@ -154,7 +154,7 @@ Use code snippets and get the highlighting directly, and even types hover!
 // TwoSlash enables TypeScript hover information
 // and errors in markdown code blocks
 // More at https://shiki.style/packages/twoslash
-import { computed, ref } from "vue";
+import { computed, ref } from 'vue';
 
 const count = ref(0);
 const doubled = computed(() => count.value * 2);
@@ -209,12 +209,8 @@ Add multiple code blocks and wrap them with <code>````md magic-move</code> (four
 ```ts {*|2|*}
 // step 1
 const author = reactive({
-  name: "John Doe",
-  books: [
-    "Vue 2 - Advanced Guide",
-    "Vue 3 - Basic Guide",
-    "Vue 4 - The Mystery",
-  ],
+  name: 'John Doe',
+  books: ['Vue 2 - Advanced Guide', 'Vue 3 - Basic Guide', 'Vue 4 - The Mystery'],
 });
 ```
 
@@ -224,12 +220,8 @@ export default {
   data() {
     return {
       author: {
-        name: "John Doe",
-        books: [
-          "Vue 2 - Advanced Guide",
-          "Vue 3 - Basic Guide",
-          "Vue 4 - The Mystery",
-        ],
+        name: 'John Doe',
+        books: ['Vue 2 - Advanced Guide', 'Vue 3 - Basic Guide', 'Vue 4 - The Mystery'],
       },
     };
   },
@@ -241,12 +233,8 @@ export default {
 export default {
   data: () => ({
     author: {
-      name: "John Doe",
-      books: [
-        "Vue 2 - Advanced Guide",
-        "Vue 3 - Basic Guide",
-        "Vue 4 - The Mystery",
-      ],
+      name: 'John Doe',
+      books: ['Vue 2 - Advanced Guide', 'Vue 3 - Basic Guide', 'Vue 4 - The Mystery'],
     },
   }),
 };
@@ -258,12 +246,8 @@ Non-code blocks are ignored.
 <!-- step 4 -->
 <script setup>
 const author = {
-  name: "John Doe",
-  books: [
-    "Vue 2 - Advanced Guide",
-    "Vue 3 - Basic Guide",
-    "Vue 4 - The Mystery",
-  ],
+  name: 'John Doe',
+  books: ['Vue 2 - Advanced Guide', 'Vue 3 - Basic Guide', 'Vue 4 - The Mystery'],
 };
 </script>
 ```
@@ -386,15 +370,7 @@ also allows you to add
 Motion animations are powered by [@vueuse/motion](https://motion.vueuse.org/), triggered by `v-motion` directive.
 
 ```html
-<div
-  v-motion
-  :initial="{ x: -80 }"
-  :enter="{ x: 0 }"
-  :click-3="{ x: 80 }"
-  :leave="{ x: 1000 }"
->
-  Slidev
-</div>
+<div v-motion :initial="{ x: -80 }" :enter="{ x: 0 }" :click-3="{ x: 80 }" :leave="{ x: 1000 }">Slidev</div>
 ```
 
 <div class="w-60 relative">
@@ -615,6 +591,7 @@ hide: false
 
 ---
 
+
 ---
 
 # Monaco Editor
@@ -624,8 +601,8 @@ Slidev provides built-in Monaco Editor support.
 Add `{monaco}` to the code block to turn it into an editor:
 
 ```ts {monaco}
-import { ref } from "vue";
-import { emptyArray } from "./external";
+import { ref } from 'vue';
+import { emptyArray } from './external';
 
 const arr = ref(emptyArray(10));
 ```
@@ -633,15 +610,10 @@ const arr = ref(emptyArray(10));
 Use `{monaco-run}` to create an editor that can execute the code directly in the slide:
 
 ```ts {monaco-run}
-import { version } from "vue";
-import { emptyArray, sayHello } from "./external";
+import { version } from 'vue';
+import { emptyArray, sayHello } from './external';
 
 sayHello();
 console.log(`vue ${version}`);
-console.log(
-  emptyArray<number>(10).reduce(
-    (fib) => [...fib, fib.at(-1)! + fib.at(-2)!],
-    [1, 1]
-  )
-);
+console.log(emptyArray<number>(10).reduce((fib) => [...fib, fib.at(-1)! + fib.at(-2)!], [1, 1]));
 ```

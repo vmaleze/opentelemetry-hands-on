@@ -1,0 +1,17 @@
+{
+  "tabWidth": 2,
+  "printWidth": 120,
+  "singleQuote": true,
+  "trailingComma": "es5",
+  "bracketSameLine": true,
+  "endOfLine": "lf",
+  "overrides": [
+    {
+      "files": ["slides.md", "pages/*.md"],
+      "options": {
+        "parser": "slidev",
+        "plugins": ["prettier-plugin-slidev"]
+      }
+    }
+  ]
+}
