@@ -2,9 +2,11 @@
 
 ## Repository content
 
-- microservices : 4 Spring Boot applications
-- presentation-slides : the presentation in format [Slidev](https://sli.dev/)
-- traffic-simulation : script to simulate the traffic on the microservices
+- microservices: 4 Spring Boot applications
+- observability: configuration of the observability stack
+- presentation-slides: the presentation in format [Slidev](https://sli.dev/)
+- signoz: configuration of Signoz
+- traffic-simulation: script to simulate the traffic on the microservices
 
 ## MacOS
 
