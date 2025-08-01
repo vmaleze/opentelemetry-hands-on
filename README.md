@@ -50,7 +50,7 @@ Switch to "English" in the settings.
 ### Cluster configuration
 
 ```sh
-k3d cluster create otel-hands-on --agents 2 # We create 2 nodesin the cluster to have "some power"
+k3d cluster create otel-hands-on --agents 2 --port "80:80@loadbalancer" --port "443:443@loadbalancer"
 kubectl create namespace microservices
 kubens microservices
 kubectl apply -n microservices -f microservices/infra/kafka-deployment.yaml
@@ -73,11 +73,25 @@ helm dependency up ./microservices/shopping-cart/infra && helm upgrade --install
 helm dependency up ./microservices/stock/infra && helm upgrade --install stock ./microservices/stock/infra
 ```
 
+Check in Headlamp that everything is fine.
+
+Modify your hosts file with the DNS entries for each microservice:
+
+- On MacOS or Linux, open "/etc/hosts" with any text editor, **as "sudo"**.
+- On Windows, open "%SystemRoot%\System32\drivers\etc\hosts" with any text editor, **launched as an administrator**.
+- Add the following line to "hosts":
+
+```txt
+127.0.0.1 order.k3s.local product.k3s.local shopping-cart.k3s.local stock.k3s.local
+```
+
 ### Launch order simulation
 
 ```sh
-kubectl apply -f ./traffic-simulation/pod.yaml
+kubectl apply -f ./traffic-simulation-pod.yaml
 ```
+
+The traffic simulation stops automatically after 10 minutes.
 
 ### Find a bug
 

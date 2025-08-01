@@ -5,4 +5,4 @@ metadata:
 spec:
   containers:
     - name: traffic-simlation
-      image: ghcr.io/vmaleze/opentelemetry-hands-on/traffic-simlation:latest
+      image: ghcr.io/vmaleze/opentelemetry-hands-on/traffic-simulation:latest
