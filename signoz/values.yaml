@@ -1,0 +1,6 @@
+signoz:
+  global:
+    storageClass: local-path
+
+  clickhouse:
+    installCustomStorageClass: true
