@@ -1,0 +1,11 @@
+microservice:
+  image:
+    repository: ghcr.io/vmaleze/opentelemetry-hands-on/product
+    tag: "latest"
+  environment:
+    PRODUCT_DB_URL: product-db:5432
+  postgres:
+    enabled: true
+    db:
+      name: product
+      password: password

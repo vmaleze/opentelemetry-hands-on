@@ -67,10 +67,10 @@ k3d cluster start otel-hands-on
 ### Microservices installation
 
 ```sh
-helm dependency up ./microservices/order/infra && helm install order ./microservices/order/infra
-helm dependency up ./microservices/product/infra && helm install product ./microservices/product/infra
-helm dependency up ./microservices/shopping-cart/infra && helm install shopping-cart ./microservices/shopping-cart/infra
-helm dependency up ./microservices/stock/infra && helm install stock ./microservices/stock/infra
+helm dependency up ./microservices/order/infra && helm upgrade --install order ./microservices/order/infra
+helm dependency up ./microservices/product/infra && helm upgrade --install product ./microservices/product/infra
+helm dependency up ./microservices/shopping-cart/infra && helm upgrade --install shopping-cart ./microservices/shopping-cart/infra
+helm dependency up ./microservices/stock/infra && helm upgrade --install stock ./microservices/stock/infra
 ```
 
 ### Launch order simulation

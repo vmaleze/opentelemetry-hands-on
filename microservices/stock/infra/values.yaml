@@ -1,0 +1,12 @@
+microservice:
+  image:
+    repository: ghcr.io/vmaleze/opentelemetry-hands-on/stock
+    tag: "latest"
+  environment:
+    STOCK_DB_URL: stock-db:5432
+    KAFKA_BROKERS: kafka-cluster:9092
+  postgres:
+    enabled: true
+    db:
+      name: stock
+      password: password

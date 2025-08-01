@@ -1,0 +1,9 @@
+apiVersion: v2
+description: Shopping Cart service
+name: shopping-cart
+version: 1.0.0
+
+dependencies:
+  - name: microservice
+    version: 1.0.0
+    repository: oci://ghcr.io/vmaleze

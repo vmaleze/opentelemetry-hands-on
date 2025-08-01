@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - "microservices/stock/**"
+      - "!microservices/stock/infra/**"
   workflow_dispatch:
 
 permissions:

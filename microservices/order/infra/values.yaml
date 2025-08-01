@@ -1,7 +1,7 @@
 microservice:
   image:
     repository: ghcr.io/vmaleze/opentelemetry-hands-on/order
-    tag: "58cc5d4efdbb775787c8aece51f24a65707e6ca3"
+    tag: "latest"
   environment:
     KAFKA_BROKERS: kafka-cluster:9092
     CART_SVC_URL: http://shopping-cart:8080

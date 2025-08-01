@@ -1,0 +1,13 @@
+microservice:
+  image:
+    repository: ghcr.io/vmaleze/opentelemetry-hands-on/shopping-cart
+    tag: "latest"
+  environment:
+    CART_DB_URL: shopping-cart-db:5432
+    PRODUCT_SVC_URL: http://product:8080
+    STOCK_SVC_URL: http://stock:8080
+  postgres:
+    enabled: true
+    db:
+      name: cart
+      password: password
