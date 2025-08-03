@@ -1,0 +1,12 @@
+{
+  "extends": "markdownlint/style/prettier",
+  "default": true,
+  "MD003": false,
+  "MD022": false,
+  "MD025": false,
+  "MD034": false,
+  "MD041": false,
+  "no-trailing-punctuation": {
+    "punctuation": ".,;:。，；：！"
+  }
+}
