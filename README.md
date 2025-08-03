@@ -82,8 +82,6 @@ helm dependency up ./microservices/shopping-cart/infra && helm upgrade --install
 helm dependency up ./microservices/stock/infra && helm upgrade --install stock ./microservices/stock/infra
 ```
 
-Check in Headlamp that everything is fine.
-
 Modify your hosts file with the DNS entries for each microservice:
 
 - On MacOS or Linux, open "/etc/hosts" with any text editor, **as "sudo"**.
@@ -95,6 +93,10 @@ Modify your hosts file with the DNS entries for each microservice:
 ```txt
 127.0.0.1 order.k3s.local product.k3s.local shopping-cart.k3s.local stock.k3s.local signoz.k3s.local
 ```
+
+Check in Headlamp that everything is fine.
+
+You can reach the APIs documentation at the following URLs: [order](https://order.k3s.local/swagger-ui/index.html), [product](https://product.k3s.local/swagger-ui/index.html), [shopping-cart](https://shopping-cart.k3s.local/swagger-ui/index.html), [stock](https://stock.k3s.local/swagger-ui/index.html). A certificate warning from the browser is expected.
 
 ### Launch order simulation
 
