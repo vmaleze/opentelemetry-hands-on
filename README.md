@@ -8,11 +8,13 @@
 - signoz: configuration of Signoz
 - traffic-simulation: script to simulate the traffic on the microservices
 
-## MacOS
+The presentation slides are available on [GitHub Pages](https://vmaleze.github.io/opentelemetry-hands-on/).
 
-## Linux
+## Configuration for MacOS
 
-## Windows with PowerShell
+## Configuration for Linux
+
+## Configuration for Windows with PowerShell
 
 ### Install winget
 
