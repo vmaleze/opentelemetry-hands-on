@@ -1,0 +1,21 @@
+:root {
+  /* Source des couleurs : https://docs.google.com/presentation/d/1FoHG9NzNOXtziBQxl27b097AstrYiqEHmlugab0HX34/edit?slide=id.gd432706255_0_106#slide=id.gd432706255_0_106
+     (slide styleguide du fichier Modèle GSlides Ippon 2024) */
+  --ippon-color-bleu-klein: #003cdc;
+  --ippon-color-bleu-profond: #000f41;
+  --ippon-color-jaune: #ffc800;
+}
+
+body {
+  color: var(--ippon-color-bleu-profond);
+}
+
+.slidev-layout {
+  h1 {
+    color: var(--ippon-color-bleu-klein);
+  }
+
+  h1 + p {
+    opacity: unset;
+  }
+}

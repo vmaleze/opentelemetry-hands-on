@@ -16,5 +16,6 @@ To start the slide show:
 Edit the [slides.md](./slides.md) to see the changes.
 
 Learn more about Slidev at the [documentation](https://sli.dev/).
+Use this [Tailwind cheat sheet](https://kombai.com/tailwind/cheat-sheet/) to find proper CSS classes.
 
 When pushing code on the repository default branch, the presentation is automatically deployed on GitHub Pages (using GitHub Actions).
