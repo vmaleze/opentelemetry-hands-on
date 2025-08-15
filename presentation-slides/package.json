@@ -8,7 +8,7 @@
     "export": "slidev export",
     "format": "prettier . --check",
     "format:fix": "prettier . --write",
-    "start": "npm run dev"
+    "start": "yarn run dev"
   },
   "dependencies": {
     "@slidev/cli": "^52.0.0",
