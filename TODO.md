@@ -1,6 +1,5 @@
 # TODO
 
-- Add build-and-push microservices workflows => Vivien
 - Add chart to all microservices => Vivien
 - Create slides
 - Create TP

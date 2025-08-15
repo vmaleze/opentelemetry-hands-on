@@ -5,7 +5,7 @@
 - microservices: 4 Spring Boot applications
 - observability: configuration of the observability stack
 - presentation-slides: the presentation in format [Slidev](https://sli.dev/)
-- signoz: configuration of Signoz
+- signoz: configuration of SigNoz
 - traffic-simulation: script to simulate the traffic on the microservices
 
 The presentation slides are available on [GitHub Pages](https://vmaleze.github.io/opentelemetry-hands-on/).
@@ -49,7 +49,7 @@ winget install headlamp
 
 Switch to "English" in the settings.
 
-## TP 1: start
+## TP 1: start the application to find a bug
 
 ### Cluster configuration
 
@@ -61,7 +61,7 @@ kubens microservices
 ### Kafka
 kubectl apply -n microservices -f microservices/infra/kafka-deployment.yaml
 
-### Signoz
+### SigNoz
 helm repo add signoz https://charts.signoz.io
 helm repo update
 helm install signoz signoz/signoz --namespace observability --create-namespace -f signoz/values.yaml

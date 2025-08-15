@@ -28,6 +28,47 @@ Durée : 2 heures
 # Who are we?
 
 ---
+
+# Course of the hands on
+
+- Dev environment installation
+- Launch an order simulation to find a bug
+- Install the observability stack
+
+---
+
+# Core concepts of observability
+
+## Logs
+
+## Metrics
+
+## Traces
+
+---
+
+# What is OpenTelemetry?
+
+- All in one observability framework!
+- Default standard nowadays in the observability and monitoring world
+- Open-source and vendor-agnostic
+- Integrated with the most popular langages, frameworks and tools
+
+\_\_
+
+# What is not OpenTelemetry?
+
+- An observability backend (storage)
+- A frontend (vizualization) of telemetry data
+
+---
+layout: image
+image: /images/application-architecture.png
+---
+
+# Application architecture and microservices interactions
+
+---
 background: https://cover.sli.dev
 layout: cover
 ---
