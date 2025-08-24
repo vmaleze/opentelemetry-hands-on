@@ -24,8 +24,20 @@ Durée : 2 heures
 ![Logo IPPON](./images/ippon-logo.svg)
 
 ---
+layout: about-speaker
+speakerPhotoPath: /images/speaker-sebastien-oddo.jpg
+speakerName: Sébastien Oddo
+speakerJobTitle: Tech-lead Frontend
+companyLogoPath: /images/ippon-logo.svg
+---
 
-# Who are we?
+::job-details::
+
+- 8 years of experience
+- Vannes, Brittany, France
+- Technical Manager at IPPON
+- Tech-Lead Consultant at JCDecaux
+- Senior Angular Developer
 
 ---
 
