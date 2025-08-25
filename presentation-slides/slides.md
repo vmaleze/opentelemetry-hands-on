@@ -29,6 +29,8 @@ speakerPhotoPath: /images/speaker-sebastien-oddo.jpg
 speakerName: Sébastien Oddo
 speakerJobTitle: Tech-lead Frontend
 companyLogoPath: /images/ippon-logo.svg
+githubUsername: Sebi11
+linkedinUsername: sébastien-oddo
 ---
 
 ::job-details::

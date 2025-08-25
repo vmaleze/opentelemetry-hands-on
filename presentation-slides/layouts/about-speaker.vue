@@ -4,6 +4,8 @@ defineProps({
   speakerName: { type: String, required: true },
   speakerJobTitle: { type: String, required: true },
   companyLogoPath: { type: String, required: true },
+  githubUsername: { type: String, required: false },
+  linkedinUsername: { type: String, required: false },
 });
 </script>
 
@@ -22,6 +24,7 @@ defineProps({
       </div>
       <img :src="companyLogoPath" alt="Company Logo" class="company-logo" />
     </div>
+    <NetworkLinks :githubUsername :linkedinUsername />
   </div>
 </template>
 
