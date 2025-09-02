@@ -229,3 +229,9 @@ kubectl apply -f ./traffic-simulation/traffic-simulation-pod.yaml
 ```
 
 - Go to the [signoz dashboard](http://signoz.k3s.local) and try to pinpoint the issue
+
+### Add custom spans 
+
+### Add custom metrics
+
+### Bonus => Filter traces
