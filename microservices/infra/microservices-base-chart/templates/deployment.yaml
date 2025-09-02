@@ -18,7 +18,7 @@ spec:
       labels:
         app: {{ .Release.Name }}
       annotations:
-        instrumentation.opentelemetry.io/inject-java: "true"
+        instrumentation.opentelemetry.io/inject-java: "opentelemetry-operator-system/otel-auto-instrumentation"
     spec:
       containers:
         - image: {{ .Values.image.repository }}:{{ .Values.image.tag | default "latest" }}
