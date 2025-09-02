@@ -3,6 +3,7 @@ kind: Pod
 metadata:
   name: traffic-simlation-pod
 spec:
+  restartPolicy: Never
   containers:
     - name: traffic-simlation
       image: ghcr.io/vmaleze/opentelemetry-hands-on/traffic-simulation:latest
