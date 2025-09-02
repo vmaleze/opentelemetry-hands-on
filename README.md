@@ -1,5 +1,15 @@
 # Hands On - OpenTelemetry
 
+## Prerequisites
+
+- OS session with administrator permissions
+- IDE like Intellij or VS Code
+- PowerShell 7 or Bash
+- Docker
+- Git et un compte GitHub
+- [mise](https://mise.jdx.dev/getting-started.html)
+- [Headlamp](https://headlamp.dev/)
+
 ## Repository content
 
 - microservices: 4 Spring Boot applications
@@ -206,10 +216,10 @@ kubectl apply -f observability/otel-instrumentation.yaml
 - Restart all deployments to take the instrumentation into account
 
 ```sh
+kubectl rollout restart deploy order
 kubectl rollout restart deploy product
 kubectl rollout restart deploy stock
 kubectl rollout restart deploy shopping-cart
-kubectl rollout restart deploy order
 ```
 
 - Relaunch order simulation
