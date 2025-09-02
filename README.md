@@ -230,8 +230,23 @@ kubectl apply -f ./traffic-simulation/traffic-simulation-pod.yaml
 
 - Go to the [signoz dashboard](http://signoz.k3s.local) and try to pinpoint the issue
 
-### Add custom spans 
+### Add custom spans
 
 ### Add custom metrics
+
+Foolowing the incident, we want to avoid being alerted by our customers. We'd like to track in our "order" microservice how many orders are created by second.
+
+Tip: use `MeterRegistry` that you can inject with Spring Boot.
+Add this dependency to the "order" microservice:
+
+```xml
+<dependency>
+    <groupId>io.micrometer</groupId>
+    <artifactId>micrometer-registry-otlp</artifactId>
+</dependency>
+```
+
+Once the code is ready, push it under your repository. Update the deplyoment in "microservices/order/infra/values.yaml" to target your repository.
+Check in Signoz that the metric is working. You can even try to create a dashbord to follow this metric and thus be alerted depending on different tresholds.
 
 ### Bonus => Filter traces
