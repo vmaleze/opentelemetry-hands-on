@@ -103,7 +103,7 @@ You can reach the APIs documentation at the following URLs: [order](https://orde
 ### Launch order simulation
 
 ```sh
-kubectl apply -f ./traffic-simulation-pod.yaml
+kubectl apply -f ./traffic-simulation/traffic-simulation-pod.yaml
 ```
 
 The traffic simulation stops automatically after 10 minutes.
@@ -145,7 +145,7 @@ metadata:
   namespace: microservices
 spec:
   mode: daemonset # Choose how to deploy the collector, cf https://github.com/open-telemetry/opentelemetry-operator/blob/main/README.md#deployment-modes
-  image: otel/opentelemetry-collector-contrib:0.131.0
+  image: otel/opentelemetry-collector-contrib:0.133.0
   config:
     receivers: # How to receive Open Telemetry data.
       otlp:
@@ -177,3 +177,45 @@ spec:
 ```sh
 kubectl apply -f observability/otel-collector.yaml
 ```
+
+### Install the java agent
+
+- Create an "otel-instrumentation.yaml" file with:
+
+```yaml
+apiVersion: opentelemetry.io/v1alpha1
+kind: Instrumentation
+metadata:
+  name: otel-auto-instrumentation
+  namespace: opentelemetry-operator-system
+spec:
+  exporter:
+    endpoint: http://otel-collector-headless:4318
+  sampler:
+    type: parentbased_always_on
+  java:
+    image: ghcr.io/open-telemetry/opentelemetry-operator/autoinstrumentation-java:2.19.0
+```
+
+- Install the instrumentation:
+
+```sh
+kubectl apply -f observability/otel-instrumentation.yaml
+```
+
+- Restart all deployments to take the instrumentation into account
+
+```sh
+kubectl rollout restart deploy product
+kubectl rollout restart deploy stock
+kubectl rollout restart deploy shopping-cart
+kubectl rollout restart deploy order
+```
+
+- Relaunch order simulation
+
+```sh
+kubectl apply -f ./traffic-simulation/traffic-simulation-pod.yaml
+```
+
+- Go to the [signoz dashboard](http://signoz.k3s.local) and try to pinpoint the issue

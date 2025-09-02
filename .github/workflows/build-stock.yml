@@ -13,6 +13,7 @@ permissions:
 
 jobs:
   call-build:
+    name: Build Stock service
     uses: ./.github/workflows/build-microservice.yml
     with:
       service-name: stock

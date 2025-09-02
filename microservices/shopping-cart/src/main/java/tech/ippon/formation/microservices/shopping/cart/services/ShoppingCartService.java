@@ -40,11 +40,21 @@ public class ShoppingCartService {
 
   public ShoppingCart getCart(String id) {
     try {
-      return cartRepository.findById(UUID.fromString(id)).orElseThrow(CartNotFoundException::new).toDto();
+        // In 75% of cases : generate random uuid to simulate an error while retreiving the cart
+        UUID uuid;
+        if (Math.random() < 0.25) { 
+            uuid = UUID.fromString(id);
+        } else {
+            uuid = UUID.randomUUID();
+        }
+
+        return cartRepository.findById(uuid)
+                .orElseThrow(CartNotFoundException::new)
+                .toDto();
     } catch (IllegalArgumentException e) {
-      throw new IncorrectIdFormatException();
+        throw new IncorrectIdFormatException();
     }
-  }
+}
 
   public ShoppingCart addToCart(String cartId, Product productToAdd) {
     var product = getProduct(productToAdd.getId());

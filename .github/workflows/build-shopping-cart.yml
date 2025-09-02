@@ -13,6 +13,7 @@ permissions:
 
 jobs:
   call-build:
+    name: Build Shopping cart service
     uses: ./.github/workflows/build-microservice.yml
     with:
       service-name: shopping-cart

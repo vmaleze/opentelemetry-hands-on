@@ -13,6 +13,7 @@ permissions:
 
 jobs:
   call-build:
+    name: Build Order service
     uses: ./.github/workflows/build-microservice.yml
     with:
       service-name: order
