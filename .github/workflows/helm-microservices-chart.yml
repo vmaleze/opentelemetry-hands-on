@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - 'microservices/infra/microservices-base-chart/**'
+      - "microservices/infra/microservices-base-chart/**"
 
 permissions:
   packages: write
@@ -32,7 +32,7 @@ jobs:
         run: |
           helm package microservices/infra/microservices-base-chart --destination .
 
-      - name: Push chart to GHCR (OCI)
+      - name: Push chart to GitHub Registry (Open Container Initiative)
         run: |
           CHART_PACKAGE=$(ls microservice-*.tgz)
           helm push $CHART_PACKAGE oci://ghcr.io/${{ github.repository_owner }}

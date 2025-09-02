@@ -142,11 +142,12 @@ apiVersion: opentelemetry.io/v1beta1
 kind: OpenTelemetryCollector
 metadata:
   name: otel
+  namespace: microservices
 spec:
   mode: daemonset # Choose how to deploy the collector, cf https://github.com/open-telemetry/opentelemetry-operator/blob/main/README.md#deployment-modes
   image: otel/opentelemetry-collector-contrib:0.131.0
   config:
-    receivers: # How to recieve Open Telemetry data.
+    receivers: # How to receive Open Telemetry data.
       otlp:
         protocols:
           grpc: {}
@@ -169,4 +170,10 @@ spec:
         metrics:
           receivers: [otlp]
           exporters: [otlp/signoz]
+```
+
+- Install the collector:
+
+```sh
+kubectl apply -f observability/otel-collector.yaml
 ```
