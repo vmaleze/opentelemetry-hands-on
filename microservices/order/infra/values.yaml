@@ -1,7 +1,8 @@
 microservice:
   image:
     repository: ghcr.io/vmaleze/opentelemetry-hands-on/order
-    tag: "latest"
+    tag: "solution"
   environment:
     KAFKA_BROKERS: kafka-cluster:9092
     CART_SVC_URL: http://shopping-cart:8080
+    OTEL_EXPORTER_OTLP_METRICS_ENDPOINT: http://otel-collector-headless:4318/v1/metrics
