@@ -20,81 +20,18 @@
 
 The presentation slides are available on [GitHub Pages](https://vmaleze.github.io/opentelemetry-hands-on/).
 
-## Configuration for MacOS
+## Setup
 
-## Configuration for Linux
+1. Fork this repository (you will need your own github repo for later stages of this hands-on) and clone it locally.
 
-## Configuration for Windows with PowerShell
+1. Depending on your OS, run the according script to setup the environment. (`setup.sh` or `setup.ps1`)  
+The script check an install pre-requisites for the TP.  
+It also setup a local k3d cluster with the necessary config.
 
-### Install winget
+1. Configure your host
 
-It is normally included in recent Windows 10 versions and in Windows 11. If not, check the [Microsoft documentatiopn](https://learn.microsoft.com/fr-fr/windows/package-manager/winget/).
-
-### Install Docker Desktop
-
-[Installation guide](https://docs.docker.com/desktop/setup/install/windows-install/)
-
-### Install mise
-
-[Starting documenation](https://mise.jdx.dev/getting-started.html)
-
-From the directory when the project was cloned:
-
-```powershell
-winget install jdx.mise
-Invoke-Item $profile
-# Paste the content to [activate mise](https://mise.jdx.dev/getting-started.html#activate-mise)
-mise install
-```
-
-Everything is stored in `%LocalAppData%\mise`.
-
-### Install Headlamp
-
-[Officiel website](https://headlamp.dev/)
-
-```powershell
-winget install headlamp
-```
-
-Switch to "English" in the settings.
-
-## TP 1: start the application to find a bug
-
-### Cluster configuration
-
-```sh
-k3d cluster create otel-hands-on --agents 2 --port "80:80@loadbalancer" --port "443:443@loadbalancer"
-kubectl create namespace microservices
-kubens microservices
-
-### Kafka
-kubectl apply -n microservices -f microservices/infra/kafka-deployment.yaml
-
-### SigNoz
-helm repo add signoz https://charts.signoz.io
-helm repo update
-helm install signoz signoz/signoz --namespace observability --create-namespace -f signoz/values.yaml
-```
-
-Check in Headlamp that everything is fine.
-
-If you need to relaunch the cluster:
-
-```sh
-k3d cluster start otel-hands-on
-```
-
-### Microservices installation
-
-```sh
-helm dependency up ./microservices/order/infra && helm upgrade --install order ./microservices/order/infra
-helm dependency up ./microservices/product/infra && helm upgrade --install product ./microservices/product/infra
-helm dependency up ./microservices/shopping-cart/infra && helm upgrade --install shopping-cart ./microservices/shopping-cart/infra
-helm dependency up ./microservices/stock/infra && helm upgrade --install stock ./microservices/stock/infra
-```
-
-Modify your hosts file with the DNS entries for each microservice:
+As we are all working locally, and to make this hands-on easier for all, we need to all use the same urls.
+To do so, modify your hosts file with the DNS entries for each microservice:
 
 - On MacOS or Linux, open "/etc/hosts" with any text editor, **as "sudo"**.
 - On Windows, open "%SystemRoot%\System32\drivers\etc\hosts" with any text editor, **launched as an administrator**.
@@ -103,14 +40,14 @@ Modify your hosts file with the DNS entries for each microservice:
 - Add the following line to "hosts":
 
 ```txt
-127.0.0.1 order.k3s.local product.k3s.local shopping-cart.k3s.local stock.k3s.local signoz.k3s.local
+127.0.0.1 order.k3d.local product.k3d.local shopping-cart.k3d.local stock.k3d.local signoz.k3d.local
 ```
 
 Check in Headlamp that everything is fine.
 
-You can reach the APIs documentation at the following URLs: [order](https://order.k3s.local/swagger-ui/index.html), [product](https://product.k3s.local/swagger-ui/index.html), [shopping-cart](https://shopping-cart.k3s.local/swagger-ui/index.html), [stock](https://stock.k3s.local/swagger-ui/index.html). A certificate warning from the browser is expected.
+You can reach the APIs documentation at the following URLs: [order](http://order.k3d.local/swagger-ui/index.html), [product](http://product.k3d.local/swagger-ui/index.html), [shopping-cart](http://shopping-cart.k3d.local/swagger-ui/index.html), [stock](http://stock.k3d.local/swagger-ui/index.html).  
 
-### Launch order simulation
+## TP 1: Launch some trafic on the website
 
 ```sh
 kubectl apply -f ./traffic-simulation/traffic-simulation-pod.yaml
@@ -120,29 +57,51 @@ The traffic simulation stops automatically after 10 minutes.
 
 ### Find a bug
 
-There's a bug in the supply chain order: someone came to tell us that the order flow is suprislingly low and likes us to investigate. Can you find what's wrong?
+There's a bug in the supply chain order: someone came to tell us that the order flow is suprislingly low and would like us to investigate. Can you find what's wrong?
 
 Tip: check logs in Headlamp or via `kubectl get logs deployments/<deployment-name> -f`.
 
-## TP 2: install the observability stack
+## TP 2: Let's add some observability
 
-### Install the operator
+To monitor our microservices, we will use [opentelemetry](https://opentelemetry.io/) and [Signoz](https://signoz.io/).
 
-It will help us to install all OpenTelemetry resources.
+### Signoz
 
-```sh
-kubectl create ns opentelemetry-operator-system
-kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.18.2/cert-manager.yaml
-kubectl -n opentelemetry-operator-system apply -f https://github.com/open-telemetry/opentelemetry-operator/releases/latest/download/opentelemetry-operator.yaml
-```
-
-### Install the backend
+SigNoz is an open-source Datadog or New Relic alternative. Get APM, logs, traces, metrics, exceptions, & alerts in a single tool.
 
 ```sh
+## Install Signoz
+helm install --wait signoz signoz/signoz --namespace observability --create-namespace -f signoz/values.yaml
+
+## Add an ingress to access signoz on http://signoz.k3d.local
 kubectl apply -f signoz/ingress.yaml
 ```
 
-### Install the collector
+### OpenTelemetry
+
+As we are in kubernetes, we will install the following components:  
+* [OpenTelemetry operator](https://opentelemetry.io/docs/platforms/kubernetes/operator/) => An implementation of a Kubernetes Operator, that manages collectors and auto-instrumentation of the workload using OpenTelemetry instrumentation libraries.
+* [OpenTelemetry Collector](https://opentelemetry.io/docs/collector/) => Vendor-agnostic way to receive, process and export telemetry data.
+* [OpenTelemetry Auto-Instrumentation](https://opentelemetry.io/docs/platforms/kubernetes/operator/automatic/) => An implementation of auto-instrumentation using the OpenTelemetry Operator.  
+The OpenTelemetry Operator supports injecting and configuring auto-instrumentation libraries for .NET, **Java**, Node.js, Python, and Go services.
+
+#### OpenTelemetry operator
+
+```sh
+## Create a separate namespace to avoid mixing everything
+kubectl create ns opentelemetry-operator-system
+
+## Installing cert manager required by the opentelemetry operator. 
+## We wait for all pods to be ready to avoid any issues while installing the operator after.
+kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.18.2/cert-manager.yaml && kubectl wait -n cert-manager --for=condition=Ready pods --all --timeout=300s
+
+## Applying the opentelemetry-operator manifest (1).
+kubectl -n opentelemetry-operator-system apply -f https://github.com/open-telemetry/opentelemetry-operator/releases/latest/download/opentelemetry-operator.yaml
+```
+
+(1). We prefer using the yaml manifest to always be on the latest version. A [helm chart](https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-operator) exists for the operator, but it is generally not updated fast enough to follow the latest changes.
+
+#### OpenTelemetry Collector
 
 - Create an "observability" directory.
 - Create an "otel-collector.yaml" file with:
@@ -154,7 +113,7 @@ metadata:
   name: otel
   namespace: microservices
 spec:
-  mode: daemonset # Choose how to deploy the collector, cf https://github.com/open-telemetry/opentelemetry-operator/blob/main/README.md#deployment-modes
+  mode: daemonset # Specifies how to deploy the collector, cf https://github.com/open-telemetry/opentelemetry-operator/blob/main/README.md#deployment-modes
   image: otel/opentelemetry-collector-contrib:0.133.0
   config:
     receivers: # How to receive Open Telemetry data.
@@ -188,7 +147,7 @@ spec:
 kubectl apply -f observability/otel-collector.yaml
 ```
 
-### Install the java agent
+### Java agent
 
 - Create an "otel-instrumentation.yaml" file with:
 
@@ -228,15 +187,39 @@ kubectl rollout restart deploy shopping-cart
 kubectl apply -f ./traffic-simulation/traffic-simulation-pod.yaml
 ```
 
-- Go to the [signoz dashboard](http://signoz.k3s.local) and try to pinpoint the issue
+- Go to the [signoz dashboard](http://signoz.k3d.local) and try to pinpoint the issue
+
+## TP3: Add some business value
 
 ### Add custom spans
 
+We just saw that there was an issue with the shopping cart id. Can you add this id into the traces to easily find what cart is causing trouble ?
+
+Tips: You need to add the following dependency and then work on the current span => https://opentelemetry.io/docs/zero-code/java/spring-boot-starter/annotations/
+```xml
+<dependency>
+    <groupId>io.opentelemetry.instrumentation</groupId>
+    <artifactId>opentelemetry-spring-boot-starter</artifactId>
+</dependency>
+
+<dependencyManagement>
+    <dependencies>
+        <dependency>
+            <groupId>io.opentelemetry.instrumentation</groupId>
+            <artifactId>opentelemetry-instrumentation-bom</artifactId>
+            <version>2.19.0</version>
+            <type>pom</type>
+            <scope>import</scope>
+        </dependency>
+    </dependencies>
+</dependencyManagement>
+```
+
 ### Add custom metrics
 
-Foolowing the incident, we want to avoid being alerted by our customers. We'd like to track in our "order" microservice how many orders are created by second.
+Following the incident, we want to avoid being alerted by our customers. We'd like to track in our "order" microservice how many orders are created by second.
 
-Tip: use `MeterRegistry` that you can inject with Spring Boot.
+Tips: Use `MeterRegistry` that you can inject with Spring Boot.
 Add this dependency to the "order" microservice:
 
 ```xml
