@@ -1,6 +1,8 @@
 package tech.ippon.formation.microservices.order.services;
 
 import io.micrometer.core.instrument.MeterRegistry;
+import io.opentelemetry.api.trace.Span;
+import io.opentelemetry.instrumentation.annotations.WithSpan;
 import java.io.IOException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,7 +30,11 @@ public class OrderService {
     this.otlpMeterRegistry = otlpMeterRegistry;
   }
 
+  @WithSpan
   public void createOrder(Order order) {
+    Span currentSpan = Span.current();
+    currentSpan.setAttribute("shoppingCartId", order.getCartId());
+
     final Response<ShoppingCart> response;
     try {
       response = shoppingCartClient.getShoppingCart(order.getCartId()).execute();
