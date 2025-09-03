@@ -191,9 +191,13 @@ kubectl apply -f ./traffic-simulation/traffic-simulation-pod.yaml
 
 ## TP3: Add some business value
 
+> [!NOTE]  
+> This part requires the usage of your forked repository.  
+> When you push on your repo, a pipeline will automatically build the service. Once built, you need to update the `<service>/infra/values.yaml` to target your repository `ghcr.io/<github_account>/opentelemetry-hands-on/<service>`
+
 ### Add custom spans
 
-We just saw that there was an issue with the shopping cart id. Can you add this id into the traces to easily find what cart is causing trouble ?
+Can you add the shopping cart id into the traces to easily find what cart is causing trouble ?
 
 Tips: You need to add the following dependency and then work on the current span => https://opentelemetry.io/docs/zero-code/java/spring-boot-starter/annotations/
 ```xml
@@ -232,4 +236,6 @@ Add this dependency to the "order" microservice:
 Once the code is ready, push it under your repository. Update the deplyoment in "microservices/order/infra/values.yaml" to target your repository.
 Check in Signoz that the metric is working. You can even try to create a dashbord to follow this metric and thus be alerted depending on different tresholds.
 
-### Bonus => Filter traces
+### TP Bonus => Filter traces
+
+Ususally, in a prod environment, you don't want to keep all traces. 
