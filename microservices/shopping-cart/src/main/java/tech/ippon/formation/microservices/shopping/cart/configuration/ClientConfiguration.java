@@ -1,5 +1,7 @@
 package tech.ippon.formation.microservices.shopping.cart.configuration;
 
+import java.util.concurrent.TimeUnit;
+import okhttp3.OkHttpClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import retrofit2.Retrofit;
@@ -18,9 +20,16 @@ public class ClientConfiguration {
 
   @Bean(name = "stockClient")
   public StockClient stockClient() {
+    var okHttpClient = new OkHttpClient.Builder()
+        .connectTimeout(1, TimeUnit.SECONDS) // connection timeout
+        .readTimeout(1, TimeUnit.SECONDS)    // server read timeout
+        .writeTimeout(1, TimeUnit.SECONDS)   // request write timeout
+        .build();
+
     return new Retrofit.Builder()
         .baseUrl(this.applicationProperties.getStockUrl())
         .addConverterFactory(JacksonConverterFactory.create())
+        .client(okHttpClient)
         .build()
         .create(StockClient.class);
   }

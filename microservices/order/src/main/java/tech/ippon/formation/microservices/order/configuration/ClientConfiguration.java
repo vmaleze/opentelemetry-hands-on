@@ -1,5 +1,7 @@
 package tech.ippon.formation.microservices.order.configuration;
 
+import java.util.concurrent.TimeUnit;
+import okhttp3.OkHttpClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import retrofit2.Retrofit;
@@ -16,7 +18,7 @@ public class ClientConfiguration {
   }
 
   @Bean(name = "shoppingCartClient")
-  public ShoppingCartClient stockClient() {
+  public ShoppingCartClient shoppingCartClient() {
     return new Retrofit.Builder()
         .baseUrl(this.applicationProperties.getShoppingCartUrl())
         .addConverterFactory(JacksonConverterFactory.create())

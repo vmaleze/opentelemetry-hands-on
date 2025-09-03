@@ -6,6 +6,7 @@ import java.util.UUID;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+import retrofit2.Call;
 import tech.ippon.formation.microservices.shopping.cart.client.ProductClient;
 import tech.ippon.formation.microservices.shopping.cart.client.StockClient;
 import tech.ippon.formation.microservices.shopping.cart.domain.Product;
@@ -40,21 +41,22 @@ public class ShoppingCartService {
 
   public ShoppingCart getCart(String id) {
     try {
-        // In 75% of cases : generate random uuid to simulate an error while retreiving the cart
-        UUID uuid;
-        if (Math.random() < 0.25) { 
-            uuid = UUID.fromString(id);
-        } else {
-            uuid = UUID.randomUUID();
-        }
-
-        return cartRepository.findById(uuid)
+        var cart = cartRepository.findById(UUID.fromString(id))
                 .orElseThrow(CartNotFoundException::new)
                 .toDto();
+
+        for (var product : cart.getProducts()) {
+          final var stocksForProduct = getProductStock(product.getId());
+          if (stocksForProduct < product.getQuantity()){
+            throw new NotEnoughStockException();
+          }
+        }
+
+        return cart;
     } catch (IllegalArgumentException e) {
         throw new IncorrectIdFormatException();
     }
-}
+  }
 
   public ShoppingCart addToCart(String cartId, Product productToAdd) {
     var product = getProduct(productToAdd.getId());
