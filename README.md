@@ -6,7 +6,7 @@
 - IDE like Intellij or VS Code
 - PowerShell 7 or Bash
 - Docker
-- Git et un compte GitHub
+- Git and a GitHub account
 - [mise](https://mise.jdx.dev/getting-started.html)
 - [Headlamp](https://headlamp.dev/)
 
