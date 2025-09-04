@@ -1,4 +1,4 @@
-[< home](<README.md>)
+[< home](<../README.md>)
 
 # Lab 3: Add some business value
 

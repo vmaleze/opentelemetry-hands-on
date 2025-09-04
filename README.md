@@ -49,7 +49,7 @@ You can reach the APIs documentation at the following URLs: [order](http://order
 
 ## Labs
 
-* [Lab 1: Work without observability](<tp1.md>)
-* [Lab 2: Let's add some observability](<tp2.md>)
-* [Lab 3: Add some business value](<tp3.md>)
-* [Lab 4 (Bonus) => Filter traces](<tp4.md>)
+* [Lab 1: Work without observability](<labs/tp1.md>)
+* [Lab 2: Let's add some observability](<labs/tp2.md>)
+* [Lab 3: Add some business value](<labs/tp3.md>)
+* [Lab 4 (Bonus) => Filter traces](<labs/tp4.md>)

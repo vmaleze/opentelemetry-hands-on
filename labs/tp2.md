@@ -1,4 +1,4 @@
-[< home](<README.md>)
+[< home](<../README.md>)
 
 # Lab 2: Let's add some observability
 
@@ -102,7 +102,7 @@ spec:
   exporter:
     endpoint: http://otel-collector-headless:4318
   sampler:
-    type: parentbased_always_on
+    type: parentbased_always_on # see tp4 for more information
   java:
     image: ghcr.io/open-telemetry/opentelemetry-operator/autoinstrumentation-java:2.19.0
 ```
@@ -121,6 +121,10 @@ kubectl rollout restart deploy product
 kubectl rollout restart deploy stock
 kubectl rollout restart deploy shopping-cart
 ```
+
+> [!NOTE]  
+> All deployments are using a helm chart that already takes into account the injection of the java agent.  
+> Feel free to check the helm chart to know how it's done => [here](https://github.com/vmaleze/opentelemetry-hands-on/blob/e492bdfc362b5eb8b4900102f4ac7c147277d7e7/microservices/infra/microservices-base-chart/templates/deployment.yaml#L21)
 
 - Relaunch order simulation
 

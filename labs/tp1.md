@@ -1,4 +1,4 @@
-[< home](<README.md>)
+[< home](<../README.md>)
 
 # Lab 1: Work without observability
 
