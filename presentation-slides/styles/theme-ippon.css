@@ -18,4 +18,14 @@ body {
   h1 + p {
     opacity: unset;
   }
+
+  h1.over-image{
+    @apply text-white font-bold bg-sky-600 bg-op-80 rounded-full p-5;
+  }
+
+  .absolute-center {
+    @apply absolute;
+    @apply left-1/2 top-1/2;
+    @apply -translate-x-1/2 -translate-y-1/2
+  }
 }

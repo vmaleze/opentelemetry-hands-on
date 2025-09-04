@@ -1,7 +1,9 @@
 ---
 theme: default
-title: OpenTelemtry Hands On
-titleTemplate: '%s - OpenTelemtry Hands On'
+colorSchema: light
+favicon: /images/otel-logo.png
+title: OpenTelemetry Hands On
+titleTemplate: '%s - OpenTelemetry Hands On'
 drawings:
   persist: false
 transition: slide-left
@@ -15,7 +17,7 @@ class: text-center # apply unocss classes to the current slide
 layout: cover
 ---
 
-# OpenTelemtry Hands On
+# OpenTelemetry Hands On
 
 ## 2h chrono pour traquer tout ce qui bouge dans ton backend avec OpenTelemetry
 
@@ -42,22 +44,73 @@ linkedinUsername: sébastien-oddo
 - Senior Angular Developer
 
 ---
+layout: about-speaker
+speakerPhotoPath: /images/speaker-vivien.jpg
+speakerName: Vivien MALEZE
+speakerJobTitle: Platform Engineer
+companyLogoPath: /images/ippon-logo.svg
+githubUsername: vmaleze
+linkedinUsername: vivien-maleze-1635b094
+---
+
+::job-details::
+
+- 12 years of experience
+- Bordeaux, France 🇫🇷
+- Background java <logos-java />
+- Developer Experience afficionados <logos-kubernetes />
+
+---
 
 # Course of the hands on
 
 - Dev environment installation
-- Launch an order simulation to find a bug
-- Install the observability stack
+- Core concepts
+- What happens when you need to work without observability ?
+- And with it ?
+- Adding business value
+- Bonus => Sampling data
 
 ---
+title: Core concepts
+layout: image
+image: /images/cogs.jpg
+---
 
-# Core concepts of observability
+<h1 class="over-image w-145 text-white absolute-center">Core concepts of observability</h1>
 
-## Logs
+---
+title: Logs
+layout: image
+image: /images/logs.webp
+---
 
-## Metrics
+<h1 class="over-image w-30 text-white">Logs</h1>
 
-## Traces
+---
+title: Metrics
+layout: image
+image: /images/metrics.webp
+---
+
+<h1 class="over-image w-42">Metrics</h1>
+
+---
+title: Tracing
+layout: image
+image: /images/distributed-tracing.png
+---
+
+<h1 class="over-image w-39">Traces</h1>
+
+---
+title: All in one
+layout: default
+---
+
+# All in one - OpenTelemetry
+
+<img src="/images/otel-logo.png" class="absolute-center"/>
 
 ---
 
@@ -77,7 +130,8 @@ linkedinUsername: sébastien-oddo
 
 ---
 layout: image
-image: /images/application-architecture.png
+image: /images/microservices-architecture.png
+backgroundSize: 70%
 ---
 
 # Application architecture and microservices interactions
