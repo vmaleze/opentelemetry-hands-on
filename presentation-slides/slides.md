@@ -41,7 +41,7 @@ linkedinUsername: sébastien-oddo
 - Vannes, Brittany, France
 - Technical Manager at IPPON
 - Tech-Lead Consultant at JCDecaux
-- Senior Angular Developer
+- Senior Angular Developer <logos-angular-icon />
 
 ---
 layout: about-speaker
