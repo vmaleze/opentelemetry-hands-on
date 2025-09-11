@@ -144,8 +144,3 @@ layout: cover
 # Questions about the lab?
 
 # Don't forget the feedback please!
-
----
-src: ./pages/slidev-example.md
-hide: true
----
