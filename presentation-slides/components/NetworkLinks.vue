@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { getBaseUrl } from './base-url.util';
 import { networks } from './NetworkLinks.model';
 
 const props = defineProps({
@@ -13,6 +14,8 @@ const isNetworkUsernameDefined = (network: string) => {
 const getUsernameByNetwork = (network: string) => {
   return props[`${network}Username`];
 };
+
+const baseUrl = getBaseUrl();
 </script>
 
 <template>
@@ -23,7 +26,7 @@ const getUsernameByNetwork = (network: string) => {
         :href="`${networks[network].baseUrl}/${getUsernameByNetwork(network)}`"
         target="_blank"
         rel="noopener noreferrer">
-        <img :src="`${networks[network].iconPath}`" :alt="`${network} icon`" class="icon" />
+        <img :src="`${baseUrl}${networks[network].iconPath}`" :alt="`${network} icon`" class="icon" />
         <span>{{ getUsernameByNetwork(network) }}</span>
       </a>
     </template>

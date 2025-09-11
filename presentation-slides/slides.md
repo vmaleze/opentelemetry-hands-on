@@ -23,7 +23,7 @@ layout: cover
 
 Durée : 2 heures
 
-![Logo IPPON](./images/ippon-logo.svg)
+![Logo IPPON](/images/ippon-logo.svg)
 
 ---
 layout: about-speaker

@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { getBaseUrl } from '../components/base-url.util';
+
 defineProps({
   speakerPhotoPath: { type: String, required: true },
   speakerName: { type: String, required: true },
@@ -7,12 +9,14 @@ defineProps({
   githubUsername: { type: String, required: false },
   linkedinUsername: { type: String, required: false },
 });
+
+const baseUrl = getBaseUrl();
 </script>
 
 <template>
   <div class="slidev-layout default">
     <div class="about-speaker">
-      <img :src="speakerPhotoPath" alt="Speaker Photo" class="speaker-photo" />
+      <img :src="baseUrl + speakerPhotoPath" alt="Speaker Photo" class="speaker-photo" />
       <div class="speaker-info">
         <h1 class="speaker-name">{{ speakerName }}</h1>
         <h2 class="speaker-title">{{ speakerJobTitle }}</h2>
@@ -22,7 +26,7 @@ defineProps({
       <div class="job-details-slot">
         <slot name="job-details" />
       </div>
-      <img :src="companyLogoPath" alt="Company Logo" class="company-logo" />
+      <img :src="baseUrl + companyLogoPath" alt="Company Logo" class="company-logo" />
     </div>
     <NetworkLinks :githubUsername :linkedinUsername />
   </div>

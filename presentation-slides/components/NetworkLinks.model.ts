@@ -5,7 +5,8 @@ export type Network = {
   baseUrl: string;
 
   /**
-   * Path to the icon image (prefer SVG)
+   * Path to the icon image (prefer SVG).
+   * It must start with a slash. The file must be in the `public` folder.
    */
   iconPath: string;
 };
