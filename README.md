@@ -1,12 +1,16 @@
 # Hands On - OpenTelemetry
 
+## Abstract
+
+You can start by reading [the abstract](labs/abstract.md) (in French) of this hands on.
+
 ## Prerequisites
 
 - OS session with administrator permissions
-- IDE like Intellij or VS Code
+- IDE like IntelliJ or Visual Studio Code
 - PowerShell 7 or Bash
 - Docker
-- Git and a GitHub account
+- Git and a [GitHub](https://github.com/) account
 - [mise](https://mise.jdx.dev/getting-started.html)
 - [Headlamp](https://headlamp.dev/)
 
@@ -25,8 +29,8 @@ The presentation slides are available on [GitHub Pages](https://vmaleze.github.i
 1. Fork this repository (you will need your own github repo for later stages of this hands-on) and clone it locally.
 
 1. Depending on your OS, run the according script to setup the environment. (`setup.sh` or `setup.ps1`)  
-The script check an install pre-requisites for the TP.  
-It also setup a local k3d cluster with the necessary config.
+   The script check an install pre-requisites for the TP.  
+   It also setup a local k3d cluster with the necessary config.
 
 1. Configure your host
 
@@ -45,11 +49,11 @@ To do so, modify your hosts file with the DNS entries for each microservice:
 
 Check in Headlamp that everything is fine.
 
-You can reach the APIs documentation at the following URLs: [order](http://order.k3d.local/swagger-ui/index.html), [product](http://product.k3d.local/swagger-ui/index.html), [shopping-cart](http://shopping-cart.k3d.local/swagger-ui/index.html), [stock](http://stock.k3d.local/swagger-ui/index.html).  
+You can reach the APIs documentation at the following URLs: [order](http://order.k3d.local/swagger-ui/index.html), [product](http://product.k3d.local/swagger-ui/index.html), [shopping-cart](http://shopping-cart.k3d.local/swagger-ui/index.html), [stock](http://stock.k3d.local/swagger-ui/index.html).
 
 ## Labs
 
-* [Lab 1: Work without observability](<labs/tp1.md>)
-* [Lab 2: Let's add some observability](<labs/tp2.md>)
-* [Lab 3: Add some business value](<labs/tp3.md>)
-* [Lab 4 (Bonus) => Filter traces](<labs/tp4.md>)
+- [Lab 1: Work without observability](labs/tp1.md)
+- [Lab 2: Let's add some observability](labs/tp2.md)
+- [Lab 3: Add some business value](labs/tp3.md)
+- [Lab 4 (Bonus): Filter traces](labs/tp4.md)
