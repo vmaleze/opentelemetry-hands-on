@@ -1,8 +1,8 @@
 # Colors
-$NC = "`e[0m"     # No Color
-$Red = "`e[0;31m" # Red
-$Green = "`e[0;32m" # Green
-$White = "`e[0;37m" # White
+$NC = "`e[0m"        # No Color
+$Red = "`e[0;31m"    # Red
+$Green = "`e[0;32m"  # Green
+$White = "`e[0;37m"  # White
 $Yellow = "`e[0;33m" # Yellow
 
 Write-Host "${White}------- Check environment --------${NC}"
@@ -26,7 +26,6 @@ Write-Host "docker: ${Green}OK${NC}"
 
 Write-Host "${White}------- Installing necessary tools with mise --------${NC}"
 
-# Equivalent to: mise install
 & mise install
 
 Write-Host "${White}------- Setup local k3d cluster --------${NC}"
