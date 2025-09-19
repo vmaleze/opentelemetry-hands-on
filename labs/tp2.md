@@ -1,4 +1,4 @@
-[< home](<../README.md>)
+[< home](../README.md)
 
 # Lab 2: Let's add some observability
 
@@ -20,11 +20,12 @@ kubectl apply -f signoz/ingress.yaml
 
 OpenTelemetry is a collection of APIs, SDKs, and tools. Use it to instrument, generate, collect, and export telemetry data (metrics, logs, and traces) to help you analyze your software’s performance and behavior.
 
-As we are in kubernetes, we will install the following components:  
-* [OpenTelemetry operator](https://opentelemetry.io/docs/platforms/kubernetes/operator/) => An implementation of a Kubernetes Operator, that manages collectors and auto-instrumentation of the workload using OpenTelemetry instrumentation libraries.
-* [OpenTelemetry Collector](https://opentelemetry.io/docs/collector/) => Vendor-agnostic way to receive, process and export telemetry data.
-* [OpenTelemetry Auto-Instrumentation](https://opentelemetry.io/docs/platforms/kubernetes/operator/automatic/) => An implementation of auto-instrumentation using the OpenTelemetry Operator.  
-The OpenTelemetry Operator supports injecting and configuring auto-instrumentation libraries for .NET, **Java**, Node.js, Python, and Go services.
+As we are in kubernetes, we will install the following components:
+
+- [OpenTelemetry operator](https://opentelemetry.io/docs/platforms/kubernetes/operator/) => An implementation of a Kubernetes Operator, that manages collectors and auto-instrumentation of the workload using OpenTelemetry instrumentation libraries.
+- [OpenTelemetry Collector](https://opentelemetry.io/docs/collector/) => Vendor-agnostic way to receive, process and export telemetry data.
+- [OpenTelemetry Auto-Instrumentation](https://opentelemetry.io/docs/platforms/kubernetes/operator/automatic/) => An implementation of auto-instrumentation using the OpenTelemetry Operator.  
+  The OpenTelemetry Operator supports injecting and configuring auto-instrumentation libraries for .NET, **Java**, Node.js, Python, and Go services.
 
 ### OpenTelemetry operator
 
@@ -32,7 +33,7 @@ The OpenTelemetry Operator supports injecting and configuring auto-instrumentati
 ## Create a separate namespace to avoid mixing everything
 kubectl create ns opentelemetry-operator-system
 
-## Installing cert manager required by the opentelemetry operator. 
+## Installing cert manager required by the opentelemetry operator.
 ## We wait for all pods to be ready to avoid any issues while installing the operator after.
 kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.18.2/cert-manager.yaml && kubectl wait -n cert-manager --for=condition=Ready pods --all --timeout=300s
 
@@ -138,4 +139,4 @@ kubectl apply -f ./traffic-simulation/traffic-simulation-pod.yaml
 
 ## Next
 
-[Lab 3: Add some business value](<tp3.md>)
+[Lab 3: Add some business value](tp3.md)

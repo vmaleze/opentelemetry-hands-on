@@ -28,7 +28,7 @@ The presentation slides are available on [GitHub Pages](https://vmaleze.github.i
 
 1. Fork this repository (you will need your own github repo for later stages of this hands-on) and clone it locally.
 
-1. Depending on your OS, run the according script to setup the environment. (`setup.sh` or `setup.ps1`)  
+1. Depending on your OS, run the according script to setup the environment (`setup.sh` or `setup.ps1`) .
    The script check an install pre-requisites for the TP.  
    It also setup a local k3d cluster with the necessary config.
 
@@ -50,6 +50,14 @@ To do so, modify your hosts file with the DNS entries for each microservice:
 Check in Headlamp that everything is fine.
 
 You can reach the APIs documentation at the following URLs: [order](http://order.k3d.local/swagger-ui/index.html), [product](http://product.k3d.local/swagger-ui/index.html), [shopping-cart](http://shopping-cart.k3d.local/swagger-ui/index.html), [stock](http://stock.k3d.local/swagger-ui/index.html).
+
+### Restart
+
+If you need to relaunch the cluster (after exiting down Docker for example):
+
+```sh
+k3d cluster start otel-hands-on
+```
 
 ## Labs
 

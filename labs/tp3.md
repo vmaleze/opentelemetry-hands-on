@@ -1,4 +1,4 @@
-[< home](<../README.md>)
+[< home](../README.md)
 
 # Lab 3: Add some business value
 
@@ -10,7 +10,8 @@
 
 Can you add the shopping cart id into the traces to easily find what cart is causing trouble ?
 
-Tips: You need to add the following dependency and then work on the current span => https://opentelemetry.io/docs/zero-code/java/spring-boot-starter/annotations/
+Tips: You need to add the following dependency and then work on the current span => [Spring Boot Starter](https://opentelemetry.io/docs/zero-code/java/spring-boot-starter/annotations/)
+
 ```xml
 <dependency>
     <groupId>io.opentelemetry.instrumentation</groupId>
@@ -49,4 +50,4 @@ Check in Signoz that the metric is working. You can even try to create a dashbor
 
 ## Next
 
-[Lab 4 (Bonus) => Filter traces](<tp4.md>)
+[Lab 4 (Bonus): Filter traces](tp4.md)

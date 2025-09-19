@@ -1,4 +1,4 @@
-[< home](<../README.md>)
+[< home](../README.md)
 
 # Lab 4 (Bonus) => Sampling
 
@@ -14,8 +14,8 @@ So far we have used [head-sampling](https://opentelemetry.io/docs/concepts/sampl
 
 ```yaml
 # otel-instrumentation.yaml
-  sampler:
-    type: parentbased_always_on # This config samples all traces.
+sampler:
+  type: parentbased_always_on # This config samples all traces.
 ```
 
 ## Let's filter our traces
@@ -42,41 +42,37 @@ spec:
     receivers:
       otlp:
         protocols:
-          grpc: { }
-          http: { }
+          grpc: {}
+          http: {}
 
     processors:
       tail_sampling:
         decision_wait: 10s
         num_traces: 500
-        policies:
-          [
+        policies: [
             {
               # Do not sample calls to actuator and swagger
               name: actuator-swagger-routes,
               type: string_attribute,
-              string_attribute: {
-                key: url.path,
-                values: [ \/actuator.*, \/swagger-ui.* ],
-                enabled_regex_matching: true,
-                invert_match: true
-              }
+              string_attribute:
+                {
+                  key: url.path,
+                  values: [\/actuator.*, \/swagger-ui.*],
+                  enabled_regex_matching: true,
+                  invert_match: true,
+                },
             },
             {
               # Always sample errors
               name: errors-policy,
               type: status_code,
-              status_code: {
-                status_codes: [ ERROR ]
-              }
+              status_code: { status_codes: [ERROR] },
             },
             {
               # Sample 50% of successful requests
               name: randomized-policy,
               type: probabilistic,
-              probabilistic: {
-                sampling_percentage: 10
-              }
+              probabilistic: { sampling_percentage: 10 },
             },
           ]
 
@@ -89,14 +85,13 @@ spec:
     service:
       pipelines:
         traces:
-          receivers: [ otlp ]
-          processors: [ tail_sampling ]
-          exporters: [ otlp/signoz ]
-
+          receivers: [otlp]
+          processors: [tail_sampling]
+          exporters: [otlp/signoz]
 ```
 
 - Apply it to the cluster
-  
+
 ```bash
 kubectl apply -f observability/otel-sampler-collector.yaml
 ```
@@ -133,7 +128,7 @@ spec:
 ```
 
 - Apply it to the cluster
-  
+
 ```bash
 kubectl apply -f observability/otel-collector.yaml
 ```
