@@ -7,7 +7,7 @@ You can start by reading [the abstract](labs/abstract.md) (in French) of this ha
 ## Prerequisites
 
 - OS session with administrator permissions
-- IDE like IntelliJ or Visual Studio Code
+- IDE like IntelliJ or Visual Studio Code, supporting Java
 - PowerShell 7 or Bash
 - Docker
 - Git and a [GitHub](https://github.com/) account
@@ -26,7 +26,7 @@ The presentation slides are available on [GitHub Pages](https://vmaleze.github.i
 
 ## Setup
 
-1. Fork this repository (you will need your own github repo for later stages of this hands-on) and clone it locally.
+1. **Fork** this repository (you will need your own GitHub repo for later stages of this hands-on) and clone it locally.
 
 1. Depending on your OS, run the according script to setup the environment (`setup.sh` or `setup.ps1`) .
    The script check an install pre-requisites for the TP.  

@@ -18,7 +18,7 @@ L’objectif : observer en temps réel les erreurs, les latences, les appels int
 💻 Pré-requis :
 
 - Session sur l'OS avec les droits administrateur
-- IDE comme IntelliJ ou Visual Studio Code
+- IDE comme IntelliJ ou Visual Studio Code, supportant Java
 - PowerShell 7 ou Bash
 - Docker
 - Git et un compte [GitHub](https://github.com/)
