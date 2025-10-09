@@ -37,7 +37,7 @@ linkedinUsername: sébastien-oddo
 
 ::job-details::
 
-- 8 years of experience
+- 9 years of experience
 - Vannes, Brittany, France
 - Technical Manager at IPPON
 - Tech-Lead Consultant at JCDecaux
