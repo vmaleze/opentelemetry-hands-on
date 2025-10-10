@@ -9,4 +9,3 @@
 - [ ] TP2 : rajouter le kill du pod traffic-simulation pour pouvoir le relancer => Vivien
 - [ ] TP3 : inverser "custom span" et "custom metrics" => Vivien
 - [ ] Tester qu'en forkant le dépôt, les images sont bien pushées après modif => Seb
-- [ ] Écrire sur une slide le lien du dépôt Git avec un QR Code => Seb

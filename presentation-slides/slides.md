@@ -140,6 +140,35 @@ backgroundSize: 70%
 layout: two-cols-header
 ---
 
+# Let's code! 💻
+
+::left::
+
+<div class="content-center h-full">
+
+## Repository to **fork**:
+
+https://github.com/vmaleze/opentelemetry-hands-on/tree/main
+
+</div>
+
+::right::
+
+![QR Code Feedback](/images/repository-vmaleze-qr-code.png)
+
+<style>
+.two-cols-header {
+    grid-template-rows: 1fr 3fr;
+}
+h2 {
+    margin-bottom: 40px;
+}
+</style>
+
+---
+layout: two-cols-header
+---
+
 # Let's conclude! 👋
 
 ::left::
