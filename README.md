@@ -59,6 +59,24 @@ If you need to relaunch the cluster (after exiting down Docker for example):
 k3d cluster start otel-hands-on
 ```
 
+## Cleaning
+
+If you'd like to clean your computer after the lab:
+
+- Uninstall Headlamp
+- Uninstall mise: `mise implode` (more detail on the [official documentation](https://mise.jdx.dev/installing-mise.html#uninstalling))
+- Remove the cluster and its content:
+
+```sh
+k3d cluster delete otel-hands-on # should remove everything, except the images
+
+docker image ls # list all Docker images
+docker container ls # list all Docker containers
+docker system prune # remove all unused data
+docker image rm <IMAGE ID> # remove a specific image
+docker container rm <CONTAINER ID> # remove a specific container
+```
+
 ## Labs
 
 - [Lab 1: Work without observability](labs/tp1.md)
