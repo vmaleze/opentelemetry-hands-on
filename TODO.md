@@ -1,7 +1,6 @@
 # TODO
 
 - [ ] Complete slides => Vivien
-- [ ] Add QR Codes for feedback and repository URL => Seb
 - [ ] Changer la couleur du titre de la slide 1 => Vivien
 - [ ] Rajouter une slide sur à quoi ressemble le processing des données dans Otel => Vivien
 - [ ] Corriger l'URL k3d / k3s => Vivien

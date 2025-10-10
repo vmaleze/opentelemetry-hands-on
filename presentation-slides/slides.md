@@ -137,10 +137,29 @@ backgroundSize: 70%
 # Application architecture and microservices interactions
 
 ---
-background: https://plus.unsplash.com/premium_photo-1704539395750-6d3ab4481521
-layout: cover
+layout: two-cols-header
 ---
 
-# Questions about the lab?
+# Let's conclude! 👋
 
-# Don't forget the feedback please!
+::left::
+
+<div class="content-center h-full">
+
+## 🤔 Questions about the lab?
+
+## 🙏 Don't forget the feedback!
+
+</div>
+::right::
+
+![QR Code Feedback](/images/DevFest_Nantes_2025-feedback-qr-code.png)
+
+<style>
+.two-cols-header {
+    grid-template-rows: 1fr 3fr;
+}
+h2 {
+    margin-bottom: 40px;
+}
+</style>
