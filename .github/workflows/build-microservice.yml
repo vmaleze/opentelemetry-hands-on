@@ -46,6 +46,17 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Prepare Docker metadata
+        id: docker-metadata
+        # Docker image tags (including repository names and image names) must be entirely lowercase.
+        # This action handles lowercasing automatically, to avoid GitHub username or repository uppercase letters.
+        uses: docker/metadata-action@v5
+        with:
+          images: ghcr.io/${{ github.repository }}/${{ inputs.service-name }}
+          tags: |
+            type=raw,value=latest,enable={{is_default_branch}}
+            type=sha
+
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
         with:
@@ -53,6 +64,4 @@ jobs:
           file: .github/microservices-utils/Dockerfile
           push: true
           platforms: linux/amd64,linux/arm64
-          tags: |
-            ghcr.io/${{ github.repository }}/${{ inputs.service-name }}:latest
-            ghcr.io/${{ github.repository }}/${{ inputs.service-name }}:${{github.sha}}
+          tags: ${{ steps.docker-metadata.outputs.tags }}
