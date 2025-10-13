@@ -69,7 +69,7 @@ spec:
               status_code: { status_codes: [ERROR] },
             },
             {
-              # Sample 50% of successful requests
+              # Sample 10% of successful requests
               name: randomized-policy,
               type: probabilistic,
               probabilistic: { sampling_percentage: 10 },
