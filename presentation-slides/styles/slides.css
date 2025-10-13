@@ -1,0 +1,163 @@
+.slidev-layout {
+  /***** Cover page styling *****/
+  .cover-content {
+    position: relative;
+    z-index: 10;
+  }
+
+  .cover-content::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(15, 23, 42, 0.5);
+    z-index: -1;
+  }
+
+  .title-text {
+    color: #3b82f6;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+  }
+
+  .subtitle-text {
+    color: #60a5fa;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.7);
+  }
+
+  .duration-text {
+    color: #93c5fd;
+    margin-top: 1rem;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+  }
+
+  /***** Course summary page styling *****/
+  .course-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+
+  .course-item {
+    padding: 1rem 1.25rem;
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.05), rgba(96, 165, 250, 0.05));
+    border: 2px solid rgba(59, 130, 246, 0.2);
+    border-radius: 0.75rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  }
+
+  .course-item.bonus {
+    background: linear-gradient(135deg, rgba(255, 200, 0, 0.05), rgba(255, 200, 0, 0.1));
+    border-color: rgba(255, 200, 0, 0.3);
+  }
+
+  .course-item p {
+    margin: 0;
+    line-height: 1.6;
+    color: var(--ippon-color-bleu-profond);
+  }
+
+  .course-item strong:first-of-type {
+    color: var(--ippon-color-bleu-klein);
+    opacity: 0.3;
+    font-size: 1.8rem;
+    margin-right: 0.5rem;
+    display: inline-block;
+  }
+
+  .course-item.bonus strong:first-of-type {
+    color: var(--ippon-color-jaune);
+    opacity: 0.8;
+    font-size: 2rem;
+  }
+
+  .course-item strong:nth-of-type(2) {
+    color: var(--ippon-color-bleu-klein);
+    font-size: 1.15rem;
+  }
+
+  .course-item.bonus strong:nth-of-type(2) {
+    color: var(--ippon-color-jaune);
+  }
+
+  .course-item br + text,
+  .course-item > p:last-child {
+    color: var(--ippon-color-bleu-profond);
+    opacity: 0.75;
+    font-size: 0.85rem;
+  }
+
+  /***** OpenTelemetry features slide *****/
+  .otel-slide {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 1rem 2rem;
+    height: 100%;
+    justify-content: center;
+  }
+
+  .otel-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    flex: 1;
+  }
+
+  .otel-section {
+    padding: 1.25rem 1.75rem;
+    border-radius: 0.6rem;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .otel-section.otel-is {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.05), rgba(96, 165, 250, 0.08));
+    border-left: 4px solid var(--ippon-color-bleu-klein);
+  }
+
+  .otel-section.otel-not {
+    background: linear-gradient(135deg, rgba(239, 68, 68, 0.03), rgba(220, 38, 38, 0.05));
+    border-left: 4px solid #dc2626;
+  }
+
+  .otel-section h2 {
+    color: var(--ippon-color-bleu-klein);
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+  }
+
+  .otel-section.otel-not p:first-of-type {
+    margin-top: auto;
+  }
+
+  .otel-section.otel-not p:last-of-type {
+    margin-bottom: auto;
+  }
+
+  .otel-section p {
+    margin: 0.6rem 0;
+    font-size: 1.05rem;
+    line-height: 1.6;
+  }
+
+  .otel-section strong {
+    color: var(--ippon-color-bleu-klein);
+  }
+
+  .otel-note {
+    padding: 1rem 1.5rem;
+    background: rgba(255, 200, 0, 0.08);
+    border-left: 4px solid var(--ippon-color-jaune);
+    border-radius: 0.6rem;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    text-align: center;
+  }
+
+  .otel-note strong {
+    color: var(--ippon-color-bleu-klein);
+  }
+}
