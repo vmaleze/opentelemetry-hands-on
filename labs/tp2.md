@@ -9,8 +9,8 @@ To monitor our microservices, we will use [opentelemetry](https://opentelemetry.
 SigNoz is an open-source Datadog or New Relic alternative. Get APM, logs, traces, metrics, exceptions, & alerts in a single tool.
 
 ```sh
-## Install Signoz
-helm install --wait signoz signoz/signoz --namespace observability --create-namespace -f signoz/values.yaml
+## Install Signoz (takes quite some time)
+helm install signoz signoz/signoz --namespace observability --create-namespace -f signoz/values.yaml
 
 ## Add an ingress to access signoz on http://signoz.k3d.local
 kubectl apply -f signoz/ingress.yaml
@@ -44,6 +44,9 @@ kubectl -n opentelemetry-operator-system apply -f https://github.com/open-teleme
 (1). We prefer to use the yaml manifest to always be on the latest version. A [helm chart](https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-operator) exists for the operator, but it is generally not updated fast enough to follow the latest changes.
 
 ### OpenTelemetry Collector
+
+- Understanding the collector
+![Collector](assets/otel-collector.png "otel-collector")
 
 - Create an `observability` directory.
 - Create an `otel-collector.yaml` file with:
