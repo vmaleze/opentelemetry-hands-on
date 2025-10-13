@@ -9,21 +9,23 @@ drawings:
 transition: slide-left
 mdc: true # enable MDC Syntax: https://sli.dev/features/mdc
 lineNumbers: true
-
-# random image from a curated Unsplash collection by Anthony
-# like them? see https://unsplash.com/collections/94734566/slidev
-background: https://images.unsplash.com/photo-1484503793037-5c9644d6a80a
+background: https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1920&q=80
+backgroundSize: cover
 class: text-center # apply unocss classes to the current slide
 layout: cover
 ---
 
-# OpenTelemetry Hands On
+<div class="cover-content">
 
-## 2h chrono pour traquer tout ce qui bouge dans ton backend avec OpenTelemetry
+# <span class="title-text">OpenTelemetry Hands On</span>
 
-Durée : 2 heures
+## <span class="subtitle-text">2h chrono pour traquer tout ce qui bouge dans ton backend avec OpenTelemetry</span>
+
+<div class="duration-text">Durée : 2 heures</div>
 
 ![Logo IPPON](/images/ippon-logo.svg)
+
+</div>
 
 ---
 layout: about-speaker
@@ -61,15 +63,56 @@ linkedinUsername: vivien-maleze-1635b094
 - Developer Experience afficionados <logos-kubernetes />
 
 ---
+layout: default
+---
 
-# Course of the hands on
+# Course of the hands on {.gradient-title}
 
-- Dev environment installation
-- Core concepts
-- What happens when you need to work without observability ?
-- And with it ?
-- Adding business value
-- Bonus => Sampling data
+<div class="course-grid">
+
+<div class="course-item">
+
+**01** 🛠️ **Dev Environment**  
+Installation & Setup
+
+</div>
+
+<div class="course-item">
+
+**02** 🧠 **Core Concepts**  
+Understanding Observability
+
+</div>
+
+<div class="course-item">
+
+**03** 🔍 **Without Observability**  
+The challenges we face
+
+</div>
+
+<div class="course-item">
+
+**04** ✨ **With Observability**  
+How it transforms debugging
+
+</div>
+
+<div class="course-item">
+
+**05** 💼 **Business Value**  
+Adding custom metrics
+
+</div>
+
+<div class="course-item bonus">
+
+**🎁 Bonus: Sampling**  
+Optimize data collection
+
+</div>
+
+</div>
 
 ---
 title: Core concepts
@@ -114,19 +157,43 @@ layout: default
 
 ---
 
-# What is OpenTelemetry?
+<div class="otel-slide">
 
-- All in one observability framework!
-- Default standard nowadays in the observability and monitoring world
-- Open-source and vendor-agnostic
-- Integrated with the most popular langages, frameworks and tools
+<div class="otel-columns">
 
-\_\_
+<div class="otel-section otel-is">
 
-# What is not OpenTelemetry?
+## What is OpenTelemetry?
 
-- An observability backend (storage)
-- A frontend (vizualization) of telemetry data
+✅ **All-in-one** observability framework
+
+✅ **Industry standard** for monitoring & observability
+
+✅ **Open-source** and vendor-agnostic
+
+✅ **Wide integration** with popular languages, frameworks & tools
+
+</div>
+
+<div class="otel-section otel-not">
+
+## What is **NOT** OpenTelemetry?
+
+❌ An observability **backend** (storage)
+
+❌ A **frontend** for data visualization
+
+</div>
+
+</div>
+
+<div class="otel-note">
+
+💡 OpenTelemetry collects and exports telemetry data, but you still need a backend like **SigNoz**, **Jaeger**, or **Prometheus** to store and visualize it.
+
+</div>
+
+</div>
 
 ---
 layout: image

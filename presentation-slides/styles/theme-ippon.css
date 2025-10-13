@@ -28,4 +28,304 @@ body {
     @apply left-1/2 top-1/2;
     @apply -translate-x-1/2 -translate-y-1/2
   }
+
+  /* Cover page styling */
+  .cover-content {
+    position: relative;
+    z-index: 10;
+  }
+
+  .cover-content::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(15, 23, 42, 0.75);
+    z-index: -1;
+  }
+
+  .title-text {
+    color: #3b82f6;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+  }
+
+  .subtitle-text {
+    color: #60a5fa;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.7);
+  }
+
+  .duration-text {
+    color: #93c5fd;
+    margin-top: 1rem;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+  }
+
+  /* Course summary page styling */
+  .gradient-title {
+    color: var(--ippon-color-bleu-klein);
+    font-weight: bold;
+  }
+
+  .course-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+
+  .course-item {
+    padding: 1rem 1.25rem;
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.05), rgba(96, 165, 250, 0.05));
+    border: 2px solid rgba(59, 130, 246, 0.2);
+    border-radius: 0.75rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  }
+
+  .course-item.bonus {
+    background: linear-gradient(135deg, rgba(255, 200, 0, 0.05), rgba(255, 200, 0, 0.1));
+    border-color: rgba(255, 200, 0, 0.3);
+  }
+
+  .course-item p {
+    margin: 0;
+    line-height: 1.6;
+    color: var(--ippon-color-bleu-profond);
+  }
+
+  .course-item strong:first-of-type {
+    color: var(--ippon-color-bleu-klein);
+    opacity: 0.3;
+    font-size: 1.8rem;
+    margin-right: 0.5rem;
+    display: inline-block;
+  }
+
+  .course-item.bonus strong:first-of-type {
+    color: var(--ippon-color-jaune);
+    opacity: 0.8;
+    font-size: 2rem;
+  }
+
+  .course-item strong:nth-of-type(2) {
+    color: var(--ippon-color-bleu-klein);
+    font-size: 1.15rem;
+  }
+
+  .course-item.bonus strong:nth-of-type(2) {
+    color: var(--ippon-color-jaune);
+  }
+
+  .course-item br + text,
+  .course-item > p:last-child {
+    color: var(--ippon-color-bleu-profond);
+    opacity: 0.75;
+    font-size: 0.85rem;
+  }
+
+  /* OpenTelemetry features slide */
+  .otel-slide {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 1rem 2rem;
+    height: 100%;
+    justify-content: center;
+  }
+
+  .otel-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    flex: 1;
+  }
+
+  .otel-section {
+    padding: 1.25rem 1.75rem;
+    border-radius: 0.6rem;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .otel-section.otel-is {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.05), rgba(96, 165, 250, 0.08));
+    border-left: 4px solid var(--ippon-color-bleu-klein);
+  }
+
+  .otel-section.otel-not {
+    background: linear-gradient(135deg, rgba(239, 68, 68, 0.03), rgba(220, 38, 38, 0.05));
+    border-left: 4px solid #dc2626;
+  }
+
+  .otel-section h2 {
+    color: var(--ippon-color-bleu-klein);
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+  }
+
+  .otel-section.otel-not p:first-of-type {
+    margin-top: auto;
+  }
+
+  .otel-section.otel-not p:last-of-type {
+    margin-bottom: auto;
+  }
+
+  .otel-section p {
+    margin: 0.6rem 0;
+    font-size: 1.05rem;
+    line-height: 1.6;
+  }
+
+  .otel-section strong {
+    color: var(--ippon-color-bleu-klein);
+  }
+
+  .otel-note {
+    padding: 1rem 1.5rem;
+    background: rgba(255, 200, 0, 0.08);
+    border-left: 4px solid var(--ippon-color-jaune);
+    border-radius: 0.6rem;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    text-align: center;
+  }
+
+  .otel-note strong {
+    color: var(--ippon-color-bleu-klein);
+  }
+
+  /* Speakers slide - merged layout */
+  .speakers-slide {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 2rem 2.5rem;
+    justify-content: space-between;
+  }
+
+  .speakers-title {
+    text-align: center;
+    color: var(--ippon-color-bleu-klein);
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    font-weight: bold;
+  }
+
+  .speakers-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    flex: 1;
+  }
+
+  .speaker-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1.5rem;
+    background: linear-gradient(135deg, rgba(0, 60, 220, 0.03), rgba(0, 60, 220, 0.06));
+    border-radius: 1rem;
+    border: 2px solid rgba(0, 60, 220, 0.15);
+    position: relative;
+  }
+
+  .speaker-photo-wrapper {
+    position: relative;
+    margin-bottom: 1rem;
+  }
+
+  .speaker-photo-wrapper::before {
+    content: '';
+    position: absolute;
+    inset: -6px;
+    background: linear-gradient(135deg, var(--ippon-color-bleu-klein), var(--ippon-color-jaune));
+    border-radius: 50%;
+    z-index: -1;
+  }
+
+  .speaker-photo {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    border: 3px solid white;
+    object-fit: cover;
+    display: block;
+  }
+
+  .speaker-content {
+    text-align: center;
+    width: 100%;
+  }
+
+  .speaker-name {
+    font-size: 1.5rem;
+    color: var(--ippon-color-bleu-klein);
+    margin: 0.5rem 0 0.25rem 0;
+    font-weight: bold;
+  }
+
+  .speaker-title {
+    font-size: 1.1rem;
+    color: var(--ippon-color-bleu-profond);
+    opacity: 0.8;
+    margin: 0 0 1rem 0;
+    font-weight: 500;
+  }
+
+  .speaker-details {
+    text-align: left;
+    padding: 1rem 1.25rem;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .speaker-details p {
+    margin: 0.4rem 0;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--ippon-color-bleu-profond);
+  }
+
+  .speaker-socials {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+  }
+
+  .social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background: white;
+    border-radius: 50%;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+  }
+
+  .social-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  .social-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .ippon-logo-footer {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+  }
+
+  .company-logo-bottom {
+    width: 120px;
+    height: auto;
+    opacity: 0.8;
+  }
 }
