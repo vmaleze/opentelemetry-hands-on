@@ -133,6 +133,7 @@ kubectl rollout restart deploy shopping-cart
 - Relaunch order simulation
 
 ```sh
+kubectl delete pod traffic-simulation-pod
 kubectl apply -f ./traffic-simulation/traffic-simulation-pod.yaml
 ```
 
