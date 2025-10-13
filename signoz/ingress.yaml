@@ -6,7 +6,7 @@ metadata:
 spec:
   ingressClassName: traefik
   rules:
-    - host: signoz.k3s.local
+    - host: signoz.k3d.local
       http:
         paths:
           - path: /
