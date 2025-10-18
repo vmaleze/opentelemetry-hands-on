@@ -8,11 +8,12 @@ You can start by reading [the abstract](labs/abstract.md) (in French) of this ha
 
 - OS session with administrator permissions
 - IDE like IntelliJ or Visual Studio Code, supporting Java
-- PowerShell 7 or Bash
+- PowerShell 7 if you're using Windows: get it from the [documentation](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows?view=powershell-7.5) using WinGet
+- Bash (or zsh of fish) if you're using MacOS or Linux
 - Docker
 - Git and a [GitHub](https://github.com/) account
-- [mise](https://mise.jdx.dev/getting-started.html)
-- [Headlamp](https://headlamp.dev/)
+- [mise](https://mise.jdx.dev/getting-started.html): don't forget to properly [add it to your shell](https://mise.jdx.dev/installing-mise.html#shells) with `mise activate <shell>` after the installation
+- [Headlamp](https://headlamp.dev/), unless you master the command line around `kubectl`
 
 ## Repository content
 
@@ -28,11 +29,13 @@ The presentation slides are available on [GitHub Pages](https://vmaleze.github.i
 
 1. **Fork** this repository (you will need your own GitHub repo for later stages of this hands-on) and clone it locally.
 
+1. Run `mise install` at the root of the repository.
+
 1. Depending on your OS, run the according script to setup the environment (`setup.sh` or `setup.ps1`) .
    The script check an install pre-requisites for the TP.  
    It also setup a local k3d cluster with the necessary config.
 
-1. Configure your host
+1. Configure your hosts
 
 As we are all working locally, and to make this hands-on easier for all, we need to all use the same urls.
 To do so, modify your hosts file with the DNS entries for each microservice:
@@ -63,6 +66,7 @@ k3d cluster start otel-hands-on
 
 If you'd like to clean your computer after the lab:
 
+- Remove the line added to your hosts file
 - Uninstall Headlamp
 - Uninstall mise: `mise implode` (more detail on the [official documentation](https://mise.jdx.dev/installing-mise.html#uninstalling))
 - Remove the cluster and its content:

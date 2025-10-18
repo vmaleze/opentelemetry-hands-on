@@ -16,6 +16,8 @@ helm install signoz signoz/signoz --namespace observability --create-namespace -
 kubectl apply -f signoz/ingress.yaml
 ```
 
+You can check when Signoz is up and running by looking at its pods state with Headlamp. Don't forget to switch to the "observabiliy" namespace to find them!
+
 ## OpenTelemetry
 
 OpenTelemetry is a collection of APIs, SDKs, and tools. Use it to instrument, generate, collect, and export telemetry data (metrics, logs, and traces) to help you analyze your software’s performance and behavior.
@@ -46,7 +48,7 @@ kubectl -n opentelemetry-operator-system apply -f https://github.com/open-teleme
 ### OpenTelemetry Collector
 
 - Understanding the collector
-![Collector](assets/otel-collector.png "otel-collector")
+  ![Collector](assets/otel-collector.png "otel-collector")
 
 - Create an `observability` directory.
 - Create an `otel-collector.yaml` file with:
