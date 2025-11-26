@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Exit immediately if any command fails
+set -e
+
 NC='\033[0m' # No Color
 Red='\033[0;31m' # Red
 Green='\033[0;32m' # Green

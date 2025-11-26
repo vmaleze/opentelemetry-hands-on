@@ -28,6 +28,46 @@ layout: cover
 </div>
 
 ---
+layout: default
+class: no-title-spacing
+---
+
+<div class="prerequisites-section">
+
+## 💻 Pre-requisites
+
+<div class="prerequisites-columns">
+<div>
+
+- Admin rights on the OS session
+- IDE like IntelliJ or Visual Studio Code with Java support
+- PowerShell 7 or Bash
+- Docker
+
+</div>
+<div>
+
+- Git and a [GitHub](https://github.com/) account
+- [mise](https://mise.jdx.dev/getting-started.html)
+- [Headlamp](https://headlamp.dev/)
+
+</div>
+</div>
+
+</div>
+
+<div class="setup-section">
+
+## 🚀 Setup before starting
+
+1. **Fork** https://github.com/vmaleze/opentelemetry-hands-on
+
+2. Run `mise install` at the root of the repository.
+
+3. Depending on your OS, run the according script to setup the environment (`setup.sh` or `setup.ps1`).
+</div>
+
+---
 layout: about-speaker
 speakerPhotoPath: /images/speaker-sebastien-oddo.jpg
 speakerName: Sébastien Oddo

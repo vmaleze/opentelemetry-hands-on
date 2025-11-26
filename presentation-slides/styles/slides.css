@@ -1,4 +1,9 @@
 .slidev-layout {
+  /***** Remove top spacing for slides without title *****/
+  &.no-title-spacing {
+    padding-top: 2rem !important;
+  }
+
   /***** Cover page styling *****/
   .cover-content {
     position: relative;
@@ -159,5 +164,65 @@
 
   .otel-note strong {
     color: var(--ippon-color-bleu-klein);
+  }
+
+  /***** Prerequisites and Setup slide styling *****/
+  .prerequisites-section {
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.05), rgba(96, 165, 250, 0.05));
+    border-left: 4px solid var(--ippon-color-bleu-klein);
+    border-radius: 0.6rem;
+    margin-top: 0;
+    margin-bottom: 1rem;
+  }
+
+  .prerequisites-section h2 {
+    color: var(--ippon-color-bleu-klein);
+    margin-top: 0;
+    margin-bottom: 0.6rem;
+    font-size: 1.5rem;
+  }
+
+  .prerequisites-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+  }
+
+  .prerequisites-columns ul {
+    margin: 0;
+    padding-left: 1.5rem;
+  }
+
+  .prerequisites-columns li {
+    margin: 0.45rem 0;
+    line-height: 1.5;
+    font-size: 1.1rem;
+  }
+
+  .setup-section {
+    padding: 1rem 1.5rem;
+    background: rgba(255, 200, 0, 0.08);
+    border-left: 4px solid var(--ippon-color-jaune);
+    border-radius: 0.6rem;
+    margin-bottom: 0;
+  }
+
+  .setup-section h2 {
+    color: var(--ippon-color-bleu-klein);
+    margin-top: 0;
+    margin-bottom: 0.6rem;
+    font-size: 1.5rem;
+  }
+
+  .setup-section ol {
+    margin: 0;
+    padding-left: 1.5rem;
+  }
+
+  .setup-section li {
+    margin: 0.45rem 0;
+    line-height: 1.5;
+    font-size: 1.1rem;
   }
 }

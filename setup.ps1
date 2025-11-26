@@ -1,3 +1,6 @@
+# Exit immediately if any command fails
+$ErrorActionPreference = "Stop"
+
 # Colors
 $NC = "`e[0m"        # No Color
 $Red = "`e[0;31m"    # Red
