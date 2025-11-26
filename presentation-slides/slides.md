@@ -69,21 +69,23 @@ class: no-title-spacing
 
 ---
 layout: about-speaker
-speakerPhotoPath: /images/speaker-sebastien-oddo.jpg
-speakerName: Sébastien Oddo
-speakerJobTitle: Tech-lead Frontend
+speakerPhotoPath: /images/speaker-hugo.jpg
+speakerName: Hugo JOUBERT
+speakerJobTitle: DevOps Engineer / Cloud Builder
 companyLogoPath: /images/ippon-logo.svg
-githubUsername: Sebi11
-linkedinUsername: sébastien-oddo
+githubUsername: Klopklopi
+linkedinUsername: jbrthugo
 ---
 
 ::job-details::
 
-- 9 years of experience
-- Vannes, Brittany, France
-- Technical Manager at IPPON
-- Tech-Lead Consultant at JCDecaux
-- Senior Angular Developer <logos-angular-icon />
+- 2 years of experience
+- Nantes, France
+- Cloud Builder / DevOps Engineer at IPPON
+- Cloud Engineer at the CCoE of Canal+
+- OpenTofu Fan
+- AWS Certified <logos-kubernetes />
+- Kubernetes Enthusiast <logos-aws />
 
 ---
 layout: about-speaker
